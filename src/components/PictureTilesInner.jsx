@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import ImageWrapper from '../ImageLoader/ImageWrapper';
-import ImgButton from '../../base/input/ImgButton';
-import { ImageLoaderContext } from '../ImageLoader/ImageLoader';
+import ImageWrapper from './ImageLoader/ImageWrapper';
+import ImgButton from './ImgButton';
+import { ImageLoaderContext } from './ImageLoader/ImageLoader';
 
 const PictureTilesInner = ({ images, onPhotoClick }) => {
   const { onLoad } = useContext(ImageLoaderContext);

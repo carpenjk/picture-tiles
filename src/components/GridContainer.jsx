@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
 import { getProp, parseSizeUnits } from 'dataweaver';
 import { useContext } from 'react';
-import InlineSpinner from '../../inlineSpinner/InlineSpinner';
-import { ImageLoaderContext } from '../ImageLoader/ImageLoader';
+import InlineSpinner from './inlineSpinner/InlineSpinner';
+import { ImageLoaderContext } from './ImageLoader/ImageLoader';
 
 const StyledGrid = styled.div`
   position: relative;
