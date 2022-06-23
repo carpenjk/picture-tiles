@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { useRef, useEffect, useContext } from 'react';
+import { useRef, useEffect, useContext, useCallback } from 'react';
 import GridContainer from './GridContainer';
-import OverlayNavButton from '../../base/OverlayNavButton';
+// import OverlayNavButton from '../../base/OverlayNavButton';
 import { ImageLoaderContext } from '../ImageLoader/ImageLoader';
 
 const StyledButtonWrapper = styled.div`
@@ -15,8 +15,10 @@ const Tiles = ({
   onOverlayClick,
   gridHeight = ['auto', '500px'],
   maxWidth = ['none', '1300px'],
+  overlaybutton
 }) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
+  const OverlayButton = useMemo(() => overlayButton, [overlaybutton]);
   const buttonRef = useRef();
 
   // const imgCount = children.length ? children.length : 0;
@@ -39,13 +41,13 @@ const Tiles = ({
         {children}
       </GridContainer>
       <StyledButtonWrapper>
-        <OverlayNavButton
+        <OverlayButton
           ref={buttonRef}
           style={{ visibility: 'hidden' }}
           onClick={onOverlayClick}
         >
           More Photos
-        </OverlayNavButton>
+        </OverlayButton>
       </StyledButtonWrapper>
     </div>
   );
