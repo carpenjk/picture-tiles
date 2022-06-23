@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "picture-tiles",
   "version": "1.0.0",
   "description": "displays a grid of pictures",
