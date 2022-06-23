@@ -47,6 +47,8 @@
   },
   "dependencies": {
     "dataweaver": "github:carpenjk/dataweaver",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "themeweaver": "github:carpenjk/themeweaver"
   },
   "peerDependencies": {
