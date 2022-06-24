@@ -15,10 +15,10 @@ const Tiles = ({
   onOverlayClick,
   gridHeight = ['auto', '500px'],
   maxWidth = ['none', '1300px'],
-  overlaybutton
+  // overlayButton,
 }) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
-  const OverlayButton = useMemo(() => overlayButton, [overlaybutton]);
+  // const OverlayButton = useMemo(() => overlayButton, [overlayButton]);
   const buttonRef = useRef();
 
   // const imgCount = children.length ? children.length : 0;
@@ -41,13 +41,13 @@ const Tiles = ({
         {children}
       </GridContainer>
       <StyledButtonWrapper>
-        <OverlayButton
+        {/* <OverlayButton
           ref={buttonRef}
           style={{ visibility: 'hidden' }}
           onClick={onOverlayClick}
         >
           More Photos
-        </OverlayButton>
+        </OverlayButton> */}
       </StyledButtonWrapper>
     </div>
   );

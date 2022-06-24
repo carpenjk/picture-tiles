@@ -23,11 +23,11 @@ const PictureTiles = ({
   onOverlayClick,
   onPhotoClick,
   options,
-  overlayButton,
+  // overlayButton,
 }) => {
   console.log(
     '🚀 ~ file: PictureTiles.js ~ line 22 ~ PictureTiles ~ overlayButton',
-    overlayButton
+    'hello?'
   );
   // mapping determines how many images to display based on provided number of images
   const _options = { ...DEFAULT_OPTIONS, ...options };
@@ -64,7 +64,7 @@ const PictureTiles = ({
         imgCount={pCount}
         onOverlayClick={onOverlayClick}
         gridHeight={gridHeight}
-        overlayButton={overlayButton}
+        // overlayButton={overlayButton}
       >
         <PictureTilesInner onPhotoClick={onPhotoClick} images={imgProps} />
       </Tiles>
