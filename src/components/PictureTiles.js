@@ -18,7 +18,17 @@ const DEFAULT_OPTIONS = {
   numDisplayedMap: [1, 1, 3, 3, 5],
 };
 
-const PictureTiles = ({ images, onOverlayClick, onPhotoClick, options, overlayButton }) => {
+const PictureTiles = ({
+  images,
+  onOverlayClick,
+  onPhotoClick,
+  options,
+  overlayButton,
+}) => {
+  console.log(
+    '🚀 ~ file: PictureTiles.js ~ line 22 ~ PictureTiles ~ overlayButton',
+    overlayButton
+  );
   // mapping determines how many images to display based on provided number of images
   const _options = { ...DEFAULT_OPTIONS, ...options };
   const { numDisplayedMap, gridHeight } = _options;
