@@ -68,7 +68,7 @@ const GridContainer = ({
 
   //   }
   // }
-  const flattenedProps = flattenProps(
+  const flattenedProps = flattenProps({
     columns,
     columnWidth,
     gridHeight,
@@ -76,8 +76,8 @@ const GridContainer = ({
     maxGridWidth,
     rowHeight,
     minColWidth,
-    rowWidth
-  );
+    rowWidth,
+  });
   console.log(
     '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
     flattenedProps
