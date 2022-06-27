@@ -15,6 +15,7 @@ const Tiles = ({
   columns,
   columnWidth,
   gridHeight,
+  images,
   maxGridWidth,
   rowHeight,
   minColWidth,
@@ -36,6 +37,7 @@ const Tiles = ({
         columns={columns}
         columnWidth={columnWidth}
         gridHeight={gridHeight}
+        images={images}
         maxGridWidth={maxGridWidth}
         minColWidth={minColWidth}
         rowHeight={rowHeight}
