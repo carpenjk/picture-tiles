@@ -11,21 +11,19 @@ const StyledButtonWrapper = styled.div`
 `;
 const Tiles = ({
   children,
-  imgCount,
+  columns,
+  columnWidth,
+  gridHeight,
+  maxGridWidth,
+  rowHeight,
+  minColWidth,
+  rowWidth,
   onOverlayClick,
-  gridHeight = ['auto', '500px'],
-  maxWidth = ['none', '1300px'],
   overlayButton,
 }) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
   const OverlayButton = useMemo(() => overlayButton, [overlayButton]);
   const buttonRef = useRef();
-
-  // const imgCount = children.length ? children.length : 0;
-  const smallSquares = imgCount - 1;
-  // Hard coded to 2 rows with first image taking up the first 2 rows and cols
-  // remaining images fill the grid across rows
-  const colCount = imgCount !== 1 ? smallSquares / 2 + 2 : 2;
 
   useEffect(() => {
     if (isCompletelyLoaded) buttonRef.current.style.visibility = 'visible';
@@ -34,9 +32,13 @@ const Tiles = ({
   return (
     <div style={{ position: 'relative' }}>
       <GridContainer
-        colCount={colCount}
+        columns={columns}
+        columnWidth={columnWidth}
         gridHeight={gridHeight}
-        maxWidth={maxWidth}
+        maxGridWidth={maxGridWidth}
+        minColWidth={minColWidth}
+        rowHeight={rowHeight}
+        rowWidth={rowWidth}
       >
         {children}
       </GridContainer>

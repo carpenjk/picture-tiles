@@ -19,53 +19,38 @@ const DEFAULT_OPTIONS = {
 };
 
 const PictureTiles = ({
+  columns,
+  columnWidth,
+  gridHeight,
+  gridWidth,
+  maxGridWidth,
+  minColWidth,
+  rowHeight,
+  rowWidth,
   images,
   onOverlayClick,
   onPhotoClick,
   options,
   overlayButton,
-}) => {
+}) => (
   // mapping determines how many images to display based on provided number of images
-  const _options = { ...DEFAULT_OPTIONS, ...options };
-  const { numDisplayedMap, gridHeight } = _options;
-  const pCountLookup =
-    images.length > numDisplayedMap.length
-      ? numDisplayedMap.length - 1
-      : images.length - 1;
-  const pCount = numDisplayedMap[pCountLookup];
+  // const { numDisplayedMap, gridHeight } = _options;
 
-  function getUrl(img, defaults, i) {
-    const { small, large } = defaults;
-    if (i === 0) {
-      return `${img}?fit=${large.fit}&w=${large.width}&h=${large.height}`;
-    }
-    return `${img}?fit=${small.fit}&w=${small.width}&h=${small.height}`;
-  }
-
-  function getImgProps() {
-    // get subset of images to display in tiles
-    const displayImgs = images.slice(0, pCount);
-    const { small, large } = _options.imgProps;
-    const iProps = displayImgs.map((img, i) => ({
-      src: getUrl(img, _options.imgProps, i),
-      width: i === 0 ? large.width : small.width,
-      height: i === 0 ? large.height : small.height,
-    }));
-    return iProps;
-  }
-  const imgProps = getImgProps();
-  return (
-    <ImageLoader numImages={pCount}>
-      <Tiles
-        imgCount={pCount}
-        onOverlayClick={onOverlayClick}
-        gridHeight={gridHeight}
-        overlayButton={overlayButton}
-      >
-        <PictureTilesInner onPhotoClick={onPhotoClick} images={imgProps} />
-      </Tiles>
-    </ImageLoader>
-  );
-};
-
+  <ImageLoader numImages={images.length}>
+    <Tiles
+      columns={columns}
+      columnWidth={columnWidth}
+      gridHeight={gridHeight}
+      gridWidth={gridWidth}
+      maxGridWidth={maxGridWidth}
+      minColWidth={minColWidth}
+      rowHeight={rowHeight}
+      rowWidth={rowWidth}
+      onOverlayClick={onOverlayClick}
+      overlayButton={overlayButton}
+    >
+      <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
+    </Tiles>
+  </ImageLoader>
+);
 export default PictureTiles;

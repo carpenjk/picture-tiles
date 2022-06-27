@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
-import { getProp, parseSizeUnits } from 'dataweaver';
+import { flattenProps, getProp, parseSizeUnits } from 'dataweaver';
 import { useContext } from 'react';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
 import { ImageLoaderContext } from './ImageLoader/ImageLoader';
@@ -50,17 +50,56 @@ const StyledGrid = styled.div`
     }
 `}
 `;
-const GridContainer = ({ colCount, gridHeight, maxWidth, children }) => {
+const GridContainer = ({
+  columns,
+  columnWidth,
+  gridHeight,
+  images,
+  maxGridWidth,
+  rowHeight,
+  minColWidth,
+  rowWidth,
+  children,
+}) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
-  const rowHeight = parseSizeUnits(gridHeight).map(
-    (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
+  // function normalizeAndFlattenAryProps(ary){
+  //   let superProps = [];
+  //   for(i===0; i< ary.length; i+=1){
+
+  //   }
+  // }
+  const flattenedProps = flattenProps(
+    columns,
+    columnWidth,
+    gridHeight,
+    images,
+    maxGridWidth,
+    rowHeight,
+    minColWidth,
+    rowWidth
   );
+  console.log(
+    '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
+    flattenedProps
+  );
+  const imgCount = images.length;
+  const rowCount = Number.isInteger(columns) ? imgCount / columns : undefined; // row count unknown if columns is auto-fill or auto-fit
+
+  function calcRowHeightFromGrid(gridHeight) {}
+  const _rowHeight = gridHeight
+    ? parseSizeUnits(gridHeight).map(
+        (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
+      )
+    : rowHeight;
   return (
     <StyledGrid
-      colCount={colCount}
+      columns={columns}
+      columnWidth={columnWidth}
       gridHeight={gridHeight}
-      maxWidth={maxWidth}
-      rowHeight={rowHeight}
+      maxGridWidth={maxGridWidth}
+      rowHeight={_rowHeight}
+      minColWidth={minColWidth}
+      rowWidth={rowWidth}
     >
       {children}
       <InlineSpinner isOpen={!isCompletelyLoaded} />
