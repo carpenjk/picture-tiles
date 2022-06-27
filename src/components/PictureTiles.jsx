@@ -32,26 +32,29 @@ const PictureTiles = ({
   onPhotoClick,
   options,
   overlayButton,
-}) => (
-  // mapping determines how many images to display based on provided number of images
-  // const { numDisplayedMap, gridHeight } = _options;
+}) => {
+  console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
 
-  <ImageLoader numImages={images.length || 0}>
-    <Tiles
-      columns={columns}
-      columnWidth={columnWidth}
-      gridHeight={gridHeight}
-      gridWidth={gridWidth}
-      images={images}
-      maxGridWidth={maxGridWidth}
-      minColWidth={minColWidth}
-      rowHeight={rowHeight}
-      rowWidth={rowWidth}
-      onOverlayClick={onOverlayClick}
-      overlayButton={overlayButton}
-    >
-      <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
-    </Tiles>
-  </ImageLoader>
-);
+  return (
+    // mapping determines how many images to display based on provided number of images
+    // const { numDisplayedMap, gridHeight } = _options;
+    <ImageLoader numImages={images && images.length ? images.length : 0}>
+      <Tiles
+        columns={columns}
+        columnWidth={columnWidth}
+        gridHeight={gridHeight}
+        gridWidth={gridWidth}
+        images={images}
+        maxGridWidth={maxGridWidth}
+        minColWidth={minColWidth}
+        rowHeight={rowHeight}
+        rowWidth={rowWidth}
+        onOverlayClick={onOverlayClick}
+        overlayButton={overlayButton}
+      >
+        <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
+      </Tiles>
+    </ImageLoader>
+  );
+};
 export default PictureTiles;
