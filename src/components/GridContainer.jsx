@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
-import { flattenProps, getProp, parseSizeUnits } from 'dataweaver';
+import { flattenProps, getProp, mapFlatProp, parseSizeUnits } from 'dataweaver';
 import { useContext } from 'react';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
 import { ImageLoaderContext } from './ImageLoader/ImageLoader';
@@ -50,7 +50,8 @@ const StyledGrid = styled.div`
     }
 `}
 `;
-const GridContainer = ({
+
+function calcProps({
   columns,
   columnWidth,
   gridHeight,
@@ -59,8 +60,28 @@ const GridContainer = ({
   rowHeight,
   minColWidth,
   rowWidth,
-  children,
-}) => {
+}) {
+  const imgCount = images && images.length ? images.length : 0;
+  const rowCount = Number.isInteger(columns) ? imgCount / columns : undefined; // row count unknown if columns is auto-fill or auto-fit
+  const _rowHeight = gridHeight
+    ? parseSizeUnits(gridHeight).map(
+        (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
+      )
+    : rowHeight;
+  return {
+    columns,
+    columnWidth,
+    gridHeight,
+    images,
+    imgCount,
+    maxGridWidth,
+    rowHeight: _rowHeight,
+    rowCount,
+    minColWidth,
+    rowWidth,
+  };
+}
+const GridContainer = ({ images, children, ...props }) => {
   console.log('🚀 ~ file: GridContainer.jsx ~ line 64 ~ images', images);
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
   // function normalizeAndFlattenAryProps(ary){
@@ -70,38 +91,37 @@ const GridContainer = ({
   //   }
   // }
   const flattenedProps = flattenProps({
-    columns,
-    columnWidth,
-    gridHeight,
+    ...props,
     images: [images],
-    maxGridWidth,
-    rowHeight,
-    minColWidth,
-    rowWidth,
   });
   console.log(
     '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
     flattenedProps
   );
 
-  const imgCount = images && images.length ? images.length : 0;
-  const rowCount = Number.isInteger(columns) ? imgCount / columns : undefined; // row count unknown if columns is auto-fill or auto-fit
+  const calculatedProps = mapFlatProp(
+    calcProps,
+    flattenProps({
+      ...props,
+      images: [images],
+    })
+  );
+  console.log(
+    '🚀 ~ file: GridContainer.jsx ~ line 109 ~ GridContainer ~ calculatedProps',
+    calculatedProps
+  );
 
   function calcRowHeightFromGrid(gridHeight) {}
-  const _rowHeight = gridHeight
-    ? parseSizeUnits(gridHeight).map(
-        (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
-      )
-    : rowHeight;
+
   return (
     <StyledGrid
-      columns={columns}
-      columnWidth={columnWidth}
-      gridHeight={gridHeight}
-      maxGridWidth={maxGridWidth}
-      rowHeight={_rowHeight}
-      minColWidth={minColWidth}
-      rowWidth={rowWidth}
+    // columns={columns}
+    // columnWidth={columnWidth}
+    // gridHeight={gridHeight}
+    // maxGridWidth={maxGridWidth}
+    // rowHeight={_rowHeight}
+    // minColWidth={minColWidth}
+    // rowWidth={rowWidth}
     >
       {children}
       <InlineSpinner isOpen={!isCompletelyLoaded} />
