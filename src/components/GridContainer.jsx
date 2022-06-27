@@ -61,6 +61,7 @@ const GridContainer = ({
   rowWidth,
   children,
 }) => {
+  console.log('🚀 ~ file: GridContainer.jsx ~ line 64 ~ images', images);
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
   // function normalizeAndFlattenAryProps(ary){
   //   let superProps = [];
@@ -72,7 +73,7 @@ const GridContainer = ({
     columns,
     columnWidth,
     gridHeight,
-    images,
+    images: [images],
     maxGridWidth,
     rowHeight,
     minColWidth,
