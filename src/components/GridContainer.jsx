@@ -68,15 +68,27 @@ const GridContainer = ({
 
   //   }
   // }
+  // const flattenedProps = flattenProps({
+  //   columns,
+  //   columnWidth,
+  //   gridHeight,
+  //   images,
+  //   maxGridWidth,
+  //   rowHeight,
+  //   minColWidth,
+  //   rowWidth,
+  // });
+  // console.log(
+  //   '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
+  //   flattenedProps
+  // );
   const flattenedProps = flattenProps({
-    columns,
-    columnWidth,
-    gridHeight,
-    images,
-    maxGridWidth,
-    rowHeight,
-    minColWidth,
-    rowWidth,
+    columns: [1, 5],
+    columnWidth: ['100%', '1fr'],
+    gridHeight: [100, 200],
+    images: [[1, 2, 3, 4, 5]],
+    maxGridWidth: ['100px', '250px', '350px'],
+    anotherProp: undefined,
   });
   console.log(
     '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
