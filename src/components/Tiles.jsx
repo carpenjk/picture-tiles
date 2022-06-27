@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useRef, useEffect, useContext, useMemo } from 'react';
+import { flattenProps } from 'dataweaver';
 import GridContainer from './GridContainer';
 // import OverlayNavButton from '../../base/OverlayNavButton';
 import { ImageLoaderContext } from './ImageLoader/ImageLoader';
