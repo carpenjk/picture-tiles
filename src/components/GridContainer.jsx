@@ -94,7 +94,7 @@ const GridContainer = ({
     '🚀 ~ file: GridContainer.jsx ~ line 81 ~ flattenedProps',
     flattenedProps
   );
-  const imgCount = images.length;
+  const imgCount = images && images.length ? images.length : 0;
   const rowCount = Number.isInteger(columns) ? imgCount / columns : undefined; // row count unknown if columns is auto-fill or auto-fit
 
   function calcRowHeightFromGrid(gridHeight) {}
