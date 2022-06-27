@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
-import { flattenProps, getProp, mapFlatProp, parseSizeUnits } from 'dataweaver';
+import {
+  flattenProps,
+  getProp,
+  mapFlatProp,
+  parseSizeUnits,
+  unflattenProps,
+} from 'dataweaver';
 import { useContext } from 'react';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
 import { ImageLoaderContext } from './ImageLoader/ImageLoader';
@@ -109,6 +115,12 @@ const GridContainer = ({ images, children, ...props }) => {
   console.log(
     '🚀 ~ file: GridContainer.jsx ~ line 109 ~ GridContainer ~ calculatedProps',
     calculatedProps
+  );
+
+  const unflattened = unflattenProps(calculatedProps);
+  console.log(
+    '🚀 ~ file: GridContainer.jsx ~ line 115 ~ GridContainer ~ unflattened',
+    unflattened
   );
 
   function calcRowHeightFromGrid(gridHeight) {}
