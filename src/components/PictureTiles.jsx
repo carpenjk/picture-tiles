@@ -36,12 +36,13 @@ const PictureTiles = ({
   // mapping determines how many images to display based on provided number of images
   // const { numDisplayedMap, gridHeight } = _options;
 
-  <ImageLoader numImages={images.length}>
+  <ImageLoader numImages={images.length || 0}>
     <Tiles
       columns={columns}
       columnWidth={columnWidth}
       gridHeight={gridHeight}
       gridWidth={gridWidth}
+      images={images}
       maxGridWidth={maxGridWidth}
       minColWidth={minColWidth}
       rowHeight={rowHeight}
