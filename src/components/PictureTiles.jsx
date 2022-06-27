@@ -37,7 +37,7 @@ const PictureTiles = ({
   // const { numDisplayedMap, gridHeight } = _options;
 
   <ImageLoader numImages={images.length}>
-    <Tiles
+    {/* <Tiles
       columns={columns}
       columnWidth={columnWidth}
       gridHeight={gridHeight}
@@ -50,7 +50,8 @@ const PictureTiles = ({
       overlayButton={overlayButton}
     >
       <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
-    </Tiles>
+    </Tiles> */}
+    <div>hello</div>
   </ImageLoader>
 );
 export default PictureTiles;
