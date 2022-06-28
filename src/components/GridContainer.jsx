@@ -124,7 +124,7 @@ function calcProps({
   }
   function getColumnWidth() {
     if (minColWidth && maxColWidth) {
-      return `minmax(${minColWidth}, ?${maxColWidth})`;
+      return `minmax(${minColWidth}, ${maxColWidth})`;
     }
     if (maxColWidth) {
       return `minmax(${minColWidth || columnWidth || '1fr'}, ?${maxColWidth})`;
