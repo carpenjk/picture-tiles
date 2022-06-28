@@ -16,7 +16,7 @@ const StyledGrid = styled.div`
   display: flex;
   width: 100%;
   height: ${getProp('gridHeight')};
-  max-width: ${getProp('maxWidth')};
+  max-width: ${getProp('maxGridWidth')};
   overflow: hidden;
 
   & button {
@@ -146,7 +146,7 @@ function calcProps({
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
   // const gridTemplateRows = rowHeight;
   // const gridAutoRows = rowHeight;
-
+  debugger;
   return {
     columns,
     columnWidth,
