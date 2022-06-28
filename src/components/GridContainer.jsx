@@ -118,7 +118,7 @@ function calcProps({
   const isFixedColumns = Number.isInteger(Number(columns));
 
   function getRowHeight() {
-    const _gridHeight = parseSizeUnits(gridHeight);
+    const _gridHeight = gridHeight ? parseSizeUnits(gridHeight) : undefined;
     if (rowHeight) return rowHeight;
     return gridHeight ? `${_gridHeight.value / rows}${gridHeight.unit}` : '1fr';
   }
