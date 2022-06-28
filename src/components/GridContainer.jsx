@@ -112,7 +112,7 @@ function calcProps({
   rows,
   rowHeight,
   minColWidth,
-  maxColumnWidth,
+  maxColWidth,
   rowWidth,
 }) {
   const isFixedColumns = Number.isInteger(Number(columns));
@@ -123,11 +123,11 @@ function calcProps({
     return gridHeight ? `${_gridHeight.value / rows}${gridHeight.unit}` : '1fr';
   }
   function getColumnWidth() {
-    if (minColWidth && maxColumnWidth) {
-      return `minmax(${(minColWidth, maxColumnWidth)})`;
+    if (minColWidth && maxColWidth) {
+      return `minmax(${(minColWidth, maxColWidth)})`;
     }
-    if (maxColumnWidth) {
-      return maxColumnWidth;
+    if (maxColWidth) {
+      return maxColWidth;
     }
     return columnWidth || '1fr';
   }

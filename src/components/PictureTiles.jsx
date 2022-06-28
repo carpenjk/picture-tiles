@@ -24,6 +24,7 @@ const PictureTiles = ({
   gridHeight,
   gridWidth,
   maxGridWidth,
+  maxColWidth,
   minColWidth,
   rowHeight,
   rowWidth,
@@ -45,6 +46,7 @@ const PictureTiles = ({
         gridHeight={gridHeight}
         gridWidth={gridWidth}
         images={images}
+        maxColWidth={maxColWidth}
         maxGridWidth={maxGridWidth}
         minColWidth={minColWidth}
         rowHeight={rowHeight}

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { useRef, useEffect, useContext, useMemo } from 'react';
-import { flattenProps } from 'dataweaver';
 import GridContainer from './GridContainer';
-// import OverlayNavButton from '../../base/OverlayNavButton';
 import { ImageLoaderContext } from './ImageLoader/ImageLoader';
 
 const StyledButtonWrapper = styled.div`
@@ -10,19 +8,7 @@ const StyledButtonWrapper = styled.div`
   bottom: 20px;
   right: 20px;
 `;
-const Tiles = ({
-  children,
-  columns,
-  columnWidth,
-  gridHeight,
-  images,
-  maxGridWidth,
-  rowHeight,
-  minColWidth,
-  rowWidth,
-  onOverlayClick,
-  overlayButton,
-}) => {
+const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
   const OverlayButton = useMemo(() => overlayButton, [overlayButton]);
   const buttonRef = useRef();
@@ -33,18 +19,7 @@ const Tiles = ({
 
   return (
     <div style={{ position: 'relative' }}>
-      <GridContainer
-        columns={columns}
-        columnWidth={columnWidth}
-        gridHeight={gridHeight}
-        images={images}
-        maxGridWidth={maxGridWidth}
-        minColWidth={minColWidth}
-        rowHeight={rowHeight}
-        rowWidth={rowWidth}
-      >
-        {children}
-      </GridContainer>
+      <GridContainer {...props}>{children}</GridContainer>
       <StyledButtonWrapper>
         <OverlayButton
           ref={buttonRef}
