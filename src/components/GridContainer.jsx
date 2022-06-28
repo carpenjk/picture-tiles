@@ -124,10 +124,10 @@ function calcProps({
   }
   function getColumnWidth() {
     if (minColWidth && maxColWidth) {
-      return `minmax(${(minColWidth, maxColWidth)})`;
+      return `minmax(${minColWidth}, ?${maxColWidth})`;
     }
     if (maxColWidth) {
-      return maxColWidth;
+      return `minmax(${minColWidth || columnWidth || '1fr'}, ?${maxColWidth})`;
     }
     return columnWidth || '1fr';
   }
@@ -146,7 +146,6 @@ function calcProps({
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
   // const gridTemplateRows = rowHeight;
   // const gridAutoRows = rowHeight;
-  debugger;
   return {
     columns,
     columnWidth,
