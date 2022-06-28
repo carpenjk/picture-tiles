@@ -32,13 +32,15 @@ const StyledGrid = styled.div`
   }
   ${breakpoint(1)`
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(${({ colCount }) => colCount}, 1fr);
+    grid-auto-flow: row dense;
+    grid-template-rows: ${getProp('rowHeight')};
+    grid-auto-rows: ${getProp('rowHeight')};
+    grid-template-columns: ${getProp('gridTemplateColumns')};
     justify-items: stretch;
     align-items: stretch;
-    width: 100%;
     height: ${getProp('gridHeight')};
-    max-width: ${getProp('maxWidth')};
+    width: ${getProp('width')};
+    max-width: ${getProp('maxGridWidth')};
 
     > *:first-child {
       grid-row: 1 / span 2;
@@ -57,36 +59,112 @@ const StyledGrid = styled.div`
 `}
 `;
 
+// function calcRowHeightFromGrid(gridHeight, columns, images) {
+//   if (columns === 'auto-fit' || columns === 'auto-fill') {
+//     // do not use gridHeight if not fixed number of columns
+//     return;
+//   }
+//   const gridSizeUnits = parseSizeUnits(gridHeight);
+//   const grid = [[]]; // [[1,1,1,...], [...]]
+//   let currRow = 0;
+//   // let currCol = 0;
+
+//   function getFirstAvailableSpot() {}
+
+//   function place([startRow, startCol], rowSpan, colSpan) {
+//     const endCol = startCol + colSpan;
+//     for (let i = 0; i < rowSpan; i += 1) {
+//       grid[startRow + i].fill(1, startCol, endCol);
+//       if (endCol === columns) {
+//         currRow += 1;
+//       }
+//     }
+//   }
+
+//   images.forEach((img) => {
+//     const { rowSpan, colSpan } = img;
+//     const toBeColEnd = grid[currRow].length + colSpan;
+//     const fitsInCurrRow = toBeColEnd < columns;
+//     if (rowSpan === 1) {
+//       if (fitsInCurrRow) {
+//         grid[currRow].fill(1, currCol, toBeColEnd);
+//       } else {
+//         const [firstAvailRow, firstAvailCol] = getFirstAvailableSpot();
+//         grid[firstAvailRow].fill(1, firstAvailCol, firstAvailCol + colSpan);
+//       }
+//     }
+//     // spans muiltiple rows
+//     place(getFirstAvaliableSpot(), rowSpan, colSpan);
+//   });
+
+//   const test = gridSizeUnits.map(
+//     (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
+//   );
+// }
+
 function calcProps({
   columns,
   columnWidth,
   gridHeight,
+  gridWidth,
   images,
   maxGridWidth,
+  rows,
   rowHeight,
   minColWidth,
+  maxColumnWidth,
   rowWidth,
 }) {
+  const isFixedColumns = Number.isInteger(Number(columns));
+
+  function getRowHeight() {
+    const _gridHeight = parseSizeUnits(gridHeight);
+    if (rowHeight) return rowHeight;
+    return gridHeight ? `${_gridHeight.value / rows}${gridHeight.unit}` : '1fr';
+  }
+  function getColumnWidth() {
+    if (minColWidth && maxColumnWidth) {
+      return `minmax(${(minColWidth, maxColumnWidth)})`;
+    }
+    if (maxColumnWidth) {
+      return maxColumnWidth;
+    }
+    return columnWidth || '1fr';
+  }
+
   const imgCount = images && images.length ? images.length : 0;
-  const rowCount = Number.isInteger(columns) ? imgCount / columns : undefined; // row count unknown if columns is auto-fill or auto-fit
-  const _rowHeight = gridHeight
-    ? parseSizeUnits(gridHeight).map(
-        (val) => `${val.value ? val.value / 2 : val.whole}${val.unit || ''}`
-      )
-    : rowHeight;
+
+  const rowCount = Number.isInteger(columns)
+    ? Math.ceil(imgCount / columns)
+    : undefined; // row count unknown if columns is auto-fill or auto-fit
+
+  // fixed columns and rows
+  const _rowHeight = getRowHeight();
+  // columns
+  // columnWidth || min max columns
+
+  const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
+  // const gridTemplateRows = rowHeight;
+  // const gridAutoRows = rowHeight;
+
   return {
     columns,
     columnWidth,
     gridHeight,
+    gridWidth,
+    gridTemplateColumns,
     images,
     imgCount,
     maxGridWidth,
     rowHeight: _rowHeight,
-    rowCount,
+    rows,
     minColWidth,
     rowWidth,
   };
 }
+
+// columns (required)
+// rowHeight || gridHeight (required)
 const GridContainer = ({ images, children, ...props }) => {
   console.log('🚀 ~ file: GridContainer.jsx ~ line 64 ~ images', images);
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
@@ -123,17 +201,16 @@ const GridContainer = ({ images, children, ...props }) => {
     unflattened
   );
 
-  function calcRowHeightFromGrid(gridHeight) {}
-
   return (
     <StyledGrid
-    // columns={columns}
-    // columnWidth={columnWidth}
-    // gridHeight={gridHeight}
-    // maxGridWidth={maxGridWidth}
-    // rowHeight={_rowHeight}
-    // minColWidth={minColWidth}
-    // rowWidth={rowWidth}
+      // columns={columns}
+      // columnWidth={columnWidth}
+      // gridHeight={gridHeight}
+      // maxGridWidth={maxGridWidth}
+      // rowHeight={_rowHeight}
+      // minColWidth={minColWidth}
+      // rowWidth={rowWidth}
+      {...unflattenProps(calculatedProps)}
     >
       {children}
       <InlineSpinner isOpen={!isCompletelyLoaded} />
