@@ -124,7 +124,7 @@ function calcProps({
         '🚀 ~ file: GridContainer.jsx ~ line 123 ~ getRowHeight ~ _gridHeight',
         _gridHeight
       );
-      return `${_gridHeight.value / rows}${gridHeight.unit}`;
+      return `${_gridHeight.value / rows}${_gridHeight.unit}`;
     }
     return rowHeight || '1fr';
   }
