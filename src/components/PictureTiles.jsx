@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -36,17 +37,23 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
+  const _images = useMemo(
+    () =>
+      images.map((img) => ({
+        width: maxColWidth || columnWidth,
+        height: rowHeight,
+        ...img,
+      }))[(images, columnWidth, maxColWidth, rowHeight)]
+  );
 
   return (
-    // mapping determines how many images to display based on provided number of images
-    // const { numDisplayedMap, gridHeight } = _options;
     <ImageLoader numImages={images && images.length ? images.length : 0}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
         gridHeight={gridHeight}
         gridWidth={gridWidth}
-        images={images}
+        images={_images}
         maxColWidth={maxColWidth}
         maxGridWidth={maxGridWidth}
         minColWidth={minColWidth}
