@@ -118,13 +118,15 @@ function calcProps({
   const isFixedColumns = Number.isInteger(Number(columns));
 
   function getRowHeight() {
-    const _gridHeight = gridHeight ? parseSizeUnits(gridHeight) : undefined;
-    console.log(
-      '🚀 ~ file: GridContainer.jsx ~ line 123 ~ getRowHeight ~ rowHeight',
-      !!rowHeight
-    );
-    if (rowHeight) return rowHeight;
-    return gridHeight ? `${_gridHeight.value / rows}${gridHeight.unit}` : '1fr';
+    if (gridHeight) {
+      const _gridHeight = parseSizeUnits(gridHeight);
+      console.log(
+        '🚀 ~ file: GridContainer.jsx ~ line 123 ~ getRowHeight ~ _gridHeight',
+        _gridHeight
+      );
+      return `${_gridHeight.value / rows}${gridHeight.unit}`;
+    }
+    return rowHeight || '1fr';
   }
   function getColumnWidth() {
     if (minColWidth && maxColWidth) {
