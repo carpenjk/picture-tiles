@@ -129,13 +129,18 @@ function calcProps({
     return rowHeight || '1fr';
   }
   function getColumnWidth() {
+    const width = columnWidth || '1fr';
     if (minColWidth && maxColWidth) {
       return `minmax(${minColWidth}, ${maxColWidth})`;
     }
-    if (maxColWidth) {
-      return `minmax(${minColWidth || columnWidth || '1fr'}, ?${maxColWidth})`;
+    if (minColWidth) {
+      // do something
+      return `minmax(${minColWidth}, ${width})`;
     }
-    return columnWidth || '1fr';
+    if (maxColWidth) {
+      return `minmax(${width}, ?${maxColWidth})`;
+    }
+    return width;
   }
 
   const imgCount = images && images.length ? images.length : 0;
