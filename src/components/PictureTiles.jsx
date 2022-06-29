@@ -26,6 +26,7 @@ const PictureTiles = ({
   maxGridWidth,
   maxColWidth,
   minColWidth,
+  rows,
   rowHeight,
   rowWidth,
   images,
@@ -49,6 +50,7 @@ const PictureTiles = ({
         maxColWidth={maxColWidth}
         maxGridWidth={maxGridWidth}
         minColWidth={minColWidth}
+        rows={rows}
         rowHeight={rowHeight}
         rowWidth={rowWidth}
         onOverlayClick={onOverlayClick}
