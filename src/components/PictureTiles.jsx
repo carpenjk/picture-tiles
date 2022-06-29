@@ -52,7 +52,7 @@ const PictureTiles = ({
             height: rHeight * img.rowSpan,
             ...img,
           })),
-        flattenProps({ images, columnWidth, maxColWidth, rowHeight })
+        flattenProps({ images: [images], columnWidth, maxColWidth, rowHeight })
       )[(images, columnWidth, maxColWidth, rowHeight)]
   );
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
