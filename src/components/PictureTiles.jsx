@@ -40,8 +40,8 @@ const PictureTiles = ({
   const _images = useMemo(
     () =>
       images.map((img) => ({
-        width: maxColWidth || columnWidth,
-        height: rowHeight,
+        width: (maxColWidth || columnWidth) * img.colSpan,
+        height: rowHeight * img.rowSpan,
         ...img,
       }))[(images, columnWidth, maxColWidth, rowHeight)]
   );
