@@ -45,6 +45,7 @@ const PictureTiles = ({
         ...img,
       }))[(images, columnWidth, maxColWidth, rowHeight)]
   );
+  console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
 
   return (
     <ImageLoader numImages={images && images.length ? images.length : 0}>
