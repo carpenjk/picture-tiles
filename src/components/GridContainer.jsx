@@ -41,16 +41,7 @@ const StyledGrid = styled.div`
     height: ${getProp('gridHeight')};
     width: ${getProp('width')};
     max-width: ${getProp('maxGridWidth')};
-
-    > *:first-child {
-      grid-row: 1 / span 2;
-      grid-column: 1 / span 2;
-    }
-    > *:not(:first-child) {
-      grid-row: auto / span 1;
-      grid-column: auto / span 1;
-      max-height: ${getProp('rowHeight')};
-    }
+    
     > *:last-child {
       grid-row: unset;
       grid-column: unset;

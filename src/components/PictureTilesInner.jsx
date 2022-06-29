@@ -10,8 +10,8 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
   return (
     <>
       {images.map((img, i) => (
-        <Tile rowSpan={img.rowSpan} colSpan={img.colSpan}>
-          <ImageWrapper key={i} id={i}>
+        <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
+          <ImageWrapper id={i}>
             <ImgButton
               type="button"
               onLoad={() => onLoad(i)}
