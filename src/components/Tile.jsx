@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const StyledTile = styled.div`
   position: relative;
-  grid-row: auto / ${getProp('rowSpan')};
-  grid-column: auto / ${getProp('rowSpan')};
+  grid-row: auto / span ${getProp('rowSpan')};
+  grid-column: auto / span ${getProp('rowSpan')};
 
   > * {
     width: 100%;
