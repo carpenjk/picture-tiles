@@ -119,6 +119,10 @@ function calcProps({
 
   function getRowHeight() {
     const _gridHeight = gridHeight ? parseSizeUnits(gridHeight) : undefined;
+    console.log(
+      '🚀 ~ file: GridContainer.jsx ~ line 123 ~ getRowHeight ~ rowHeight',
+      !!rowHeight
+    );
     if (rowHeight) return rowHeight;
     return gridHeight ? `${_gridHeight.value / rows}${gridHeight.unit}` : '1fr';
   }
