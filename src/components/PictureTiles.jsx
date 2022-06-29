@@ -43,7 +43,8 @@ const PictureTiles = ({
         width: (maxColWidth || columnWidth) * img.colSpan,
         height: rowHeight * img.rowSpan,
         ...img,
-      }))[(images, columnWidth, maxColWidth, rowHeight)]
+      })),
+    [images, columnWidth, maxColWidth, rowHeight]
   );
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
 
