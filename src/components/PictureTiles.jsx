@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { flattenProps, unflattenProps, mapFlatProp } from 'dataweaver';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -39,12 +40,20 @@ const PictureTiles = ({
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
   const _images = useMemo(
     () =>
-      images.map((img) => ({
-        width: (maxColWidth || columnWidth) * img.colSpan,
-        height: rowHeight * img.rowSpan,
-        ...img,
-      })),
-    [images, columnWidth, maxColWidth, rowHeight]
+      mapFlatProp(
+        ({
+          images: flatImages,
+          columnWidth: cWidth,
+          maxColWidth: maxCWidth,
+          rowHeight: rHeight,
+        }) =>
+          flatImages.map((img) => ({
+            width: (maxCWidth || cWidth) * img.colSpan,
+            height: rHeight * img.rowSpan,
+            ...img,
+          })),
+        flattenProps({ images, columnWidth, maxColWidth, rowHeight })
+      )[(images, columnWidth, maxColWidth, rowHeight)]
   );
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
 
@@ -55,7 +64,7 @@ const PictureTiles = ({
         columnWidth={columnWidth}
         gridHeight={gridHeight}
         gridWidth={gridWidth}
-        images={_images}
+        images={unflattenProps(_images)}
         maxColWidth={maxColWidth}
         maxGridWidth={maxGridWidth}
         minColWidth={minColWidth}
