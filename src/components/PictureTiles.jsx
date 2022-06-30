@@ -40,6 +40,10 @@ const PictureTiles = ({
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
   const _images = useMemo(() => {
     function _calc(parsedVars, fn) {
+      console.log(
+        '🚀 ~ file: PictureTiles.jsx ~ line 43 ~ _calc ~ parsedVars',
+        parsedVars
+      );
       const varValues = parsedVars.map((v) => v.value);
       console.log(
         '🚀 ~ file: PictureTiles.jsx ~ line 44 ~ _calc ~ varValues',
