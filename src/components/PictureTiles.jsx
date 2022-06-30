@@ -3,6 +3,7 @@ import { unwindProps, windProps, mapProps, parseSizeUnits } from 'dataweaver';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
+import useImageSizes from '../hooks/UseImageSizes';
 
 const DEFAULT_OPTIONS = {
   imgProps: {
@@ -38,49 +39,37 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
-  const _images = useMemo(() => {
-    function _calc(parsedVars, fn) {
-      console.log(
-        '🚀 ~ file: PictureTiles.jsx ~ line 43 ~ _calc ~ parsedVars',
-        parsedVars
-      );
-      const varValues = parsedVars.map((v) => v && v.value);
-      console.log(
-        '🚀 ~ file: PictureTiles.jsx ~ line 44 ~ _calc ~ varValues',
-        varValues
-      );
-      const u = parsedVars.find(({ unit }) => unit).unit;
-      return `${fn(varValues)}${u}`;
-    }
-    function parseAndCalc(vars, fn) {
-      console.log(
-        '🚀 ~ file: PictureTiles.jsx ~ line 56 ~ parseAndCalc ~ vars',
-        vars
-      );
-      const parsedVars = vars.map((v) => parseSizeUnits(v));
-      return _calc(parsedVars, fn);
-    }
+  const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
+  // const _images = useMemo(() => {
+  //   function _calc(parsedVars, fn) {
+  //     const varValues = parsedVars.map((v) => v && v.value);
+  //     const u = parsedVars.find(({ unit }) => unit).unit;
+  //     return `${fn(varValues)}${u}`;
+  //   }
+  //   function parseAndCalc(vars, fn) {
+  //     const parsedVars = vars.map((v) => parseSizeUnits(v));
+  //     return _calc(parsedVars, fn);
+  //   }
 
-    return mapProps(
-      ({
-        images: unwoundImages,
-        columnWidth: cWidth,
-        maxColWidth: maxCWidth,
-        rowHeight: rHeight,
-      }) =>
-        unwoundImages.map((img) => ({
-          width: parseAndCalc(
-            [maxCWidth, cWidth, img.colSpan],
-            ([_maxCWidth, _cWidth, cSpan]) =>
-              maxCWidth ? _maxCWidth * cSpan : _cWidth * cSpan
-          ),
-          height: rHeight * img.rowSpan,
-          ...img,
-        })),
-      unwindProps({ images: [images], columnWidth, maxColWidth, rowHeight })
-    );
-  }, [images, columnWidth, maxColWidth, rowHeight]);
-  console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
+  //   return mapProps(
+  //     ({
+  //       images: unwoundImages,
+  //       columnWidth: cWidth,
+  //       maxColWidth: maxCWidth,
+  //       rowHeight: rHeight,
+  //     }) =>
+  //       unwoundImages.map((img) => ({
+  //         width: parseAndCalc(
+  //           [maxCWidth, cWidth, img.colSpan],
+  //           ([_maxCWidth, _cWidth, cSpan]) =>
+  //             maxCWidth ? _maxCWidth * cSpan : _cWidth * cSpan
+  //         ),
+  //         height: rHeight * img.rowSpan,
+  //         ...img,
+  //       })),
+  //     unwindProps({ images: [images], columnWidth, maxColWidth, rowHeight })
+  //   );
+  // }, [images, columnWidth, maxColWidth, rowHeight]);
 
   return (
     <ImageLoader numImages={images && images.length ? images.length : 0}>
