@@ -44,7 +44,7 @@ const PictureTiles = ({
         '🚀 ~ file: PictureTiles.jsx ~ line 43 ~ _calc ~ parsedVars',
         parsedVars
       );
-      const varValues = parsedVars.map((v) => v.value);
+      const varValues = parsedVars.map((v) => v && v.value);
       console.log(
         '🚀 ~ file: PictureTiles.jsx ~ line 44 ~ _calc ~ varValues',
         varValues
