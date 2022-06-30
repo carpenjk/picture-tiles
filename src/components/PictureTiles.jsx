@@ -53,6 +53,10 @@ const PictureTiles = ({
       return `${fn(varValues)}${u}`;
     }
     function parseAndCalc(vars, fn) {
+      console.log(
+        '🚀 ~ file: PictureTiles.jsx ~ line 56 ~ parseAndCalc ~ vars',
+        vars
+      );
       const parsedVars = vars.map((v) => parseSizeUnits(v));
       return _calc(parsedVars, fn);
     }
