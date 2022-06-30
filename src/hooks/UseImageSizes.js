@@ -1,4 +1,4 @@
-import { mapProps, parseSizeUnits, unwindProps } from 'dataweaver';
+import { mapProps, parseSizeUnits, unwindProps, windProps } from 'dataweaver';
 import { useMemo } from 'react';
 
 const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
@@ -9,8 +9,8 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
       return `${fn(varValues)}${u}`;
     }
     function parseAndCalc(vars, fn) {
-      const parsedVars = vars.map((v) => parseSizeUnits(v));
-      return _calc(parsedVars, fn);
+      // const parsedVars = vars.map((v) => parseSizeUnits(v));
+      return _calc(parseSizeUnits(vars), fn);
     }
     return mapProps(
       ({ images: imgs, fallbackWidth: width, fallbackHeight: height }) =>
@@ -29,7 +29,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
     );
   }, [images, fallbackWidth, fallbackHeight]);
 
-  return _images;
+  return windProps(_images);
 };
 
 export default useImageSizes;
