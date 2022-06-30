@@ -1,5 +1,10 @@
 import { useMemo } from 'react';
-import { flattenProps, unflattenProps, mapFlatProp } from 'dataweaver';
+import {
+  flattenProps,
+  unflattenProps,
+  mapFlatProp,
+  parseSizeUnits,
+} from 'dataweaver';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -38,24 +43,36 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
-  const _images = useMemo(
-    () =>
-      mapFlatProp(
-        ({
-          images: flatImages,
-          columnWidth: cWidth,
-          maxColWidth: maxCWidth,
-          rowHeight: rHeight,
-        }) =>
-          flatImages.map((img) => ({
-            width: (maxCWidth || cWidth) * img.colSpan,
-            height: rHeight * img.rowSpan,
-            ...img,
-          })),
-        flattenProps({ images: [images], columnWidth, maxColWidth, rowHeight })
-      ),
-    [images, columnWidth, maxColWidth, rowHeight]
-  );
+  const _images = useMemo(() => {
+    function _calc(parsedVars, fn) {
+      const varValues = parsedVars.map((v) => v.value);
+      const u = parsedVars.find(({ unit }) => unit).unit;
+      return `${fn(varValues)}${u}`;
+    }
+    function parseAndCalc(vars, fn) {
+      const parsedVars = vars.map((v) => parseSizeUnits(v));
+      return _calc(parsedVars, fn);
+    }
+
+    return mapFlatProp(
+      ({
+        images: flatImages,
+        columnWidth: cWidth,
+        maxColWidth: maxCWidth,
+        rowHeight: rHeight,
+      }) =>
+        flatImages.map((img) => ({
+          width: parseAndCalc(
+            [maxCWidth, cWidth, img.colSpan],
+            ([_maxCWidth, _cWidth, cSpan]) =>
+              maxCWidth ? _maxCWidth * cSpan : _cWidth * cSpan
+          ),
+          height: rHeight * img.rowSpan,
+          ...img,
+        })),
+      flattenProps({ images: [images], columnWidth, maxColWidth, rowHeight })
+    );
+  }, [images, columnWidth, maxColWidth, rowHeight]);
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 48 ~ _images', _images);
 
   return (
