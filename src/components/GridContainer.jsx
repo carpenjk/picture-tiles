@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
 import {
-  flattenProps,
+  unwindProps,
   getProp,
-  mapFlatProp,
+  mapProps,
   parseSizeUnits,
-  unflattenProps,
+  windProps,
 } from 'dataweaver';
 import { useContext } from 'react';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
@@ -106,15 +106,15 @@ function calcProps({
 
 const GridContainer = ({ images, children, ...props }) => {
   const { isCompletelyLoaded } = useContext(ImageLoaderContext);
-  const calculatedProps = mapFlatProp(
+  const calculatedProps = mapProps(
     calcProps,
-    flattenProps({
+    unwindProps({
       ...props,
       images: [images],
     })
   );
   return (
-    <StyledGrid {...unflattenProps(calculatedProps)}>
+    <StyledGrid {...windProps(calculatedProps)}>
       {children}
       <InlineSpinner isOpen={!isCompletelyLoaded} />
     </StyledGrid>
