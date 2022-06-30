@@ -13,6 +13,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
       //   // const parsedVars = vars.map((v) => parseSizeUnits(v));
       //   return _calc(parseSizeUnits(vars), fn);
       // }
+
       mapProps(
         ({ images: imgs, fallbackWidth: width, fallbackHeight: height }) =>
           imgs.map((img) => ({
