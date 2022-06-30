@@ -41,6 +41,10 @@ const PictureTiles = ({
   const _images = useMemo(() => {
     function _calc(parsedVars, fn) {
       const varValues = parsedVars.map((v) => v.value);
+      console.log(
+        '🚀 ~ file: PictureTiles.jsx ~ line 44 ~ _calc ~ varValues',
+        varValues
+      );
       const u = parsedVars.find(({ unit }) => unit).unit;
       return `${fn(varValues)}${u}`;
     }
