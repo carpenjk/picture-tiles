@@ -40,6 +40,7 @@ const PictureTiles = ({
 }) => {
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 36 ~ images', images);
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
+  console.log('🚀 ~ file: PictureTiles.jsx ~ line 43 ~ _images', _images);
   // const _images = useMemo(() => {
   //   function _calc(parsedVars, fn) {
   //     const varValues = parsedVars.map((v) => v && v.value);
