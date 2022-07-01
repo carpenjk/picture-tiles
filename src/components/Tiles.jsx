@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { useRef, useEffect, useContext, useMemo } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 import GridContainer from './GridContainer';
-import { ImageLoaderContext } from './ImageLoader/ImageLoader';
+import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledButtonWrapper = styled.div`
   position: absolute;
@@ -9,7 +9,7 @@ const StyledButtonWrapper = styled.div`
   right: 20px;
 `;
 const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
-  const { isCompletelyLoaded } = useContext(ImageLoaderContext);
+  const { isCompletelyLoaded } = useImageLoader();
   const OverlayButton = useMemo(() => overlayButton, [overlayButton]);
   const buttonRef = useRef();
 

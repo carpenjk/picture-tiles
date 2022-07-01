@@ -7,9 +7,8 @@ import {
   parseSizeUnits,
   windProps,
 } from 'dataweaver';
-import { useContext } from 'react';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
-import { ImageLoaderContext } from './ImageLoader/ImageLoader';
+import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledGrid = styled.div`
   position: relative;
@@ -105,7 +104,7 @@ function calcProps({
 }
 
 const GridContainer = ({ images, children, ...props }) => {
-  const { isCompletelyLoaded } = useContext(ImageLoaderContext);
+  const { isCompletelyLoaded } = useImageLoader();
   const calculatedProps = mapProps(
     calcProps,
     unwindProps({

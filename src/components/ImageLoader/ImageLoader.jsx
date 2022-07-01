@@ -4,6 +4,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useContext,
 } from 'react';
 
 const ImageLoaderContext = createContext();
@@ -31,5 +32,12 @@ const ImageLoader = ({ children, numImages }) => {
     </ImageLoaderContext.Provider>
   );
 };
+function useImageLoader() {
+  const context = useContext(ImageLoaderContext);
+  if (context === undefined) {
+    throw new Error('useCount must be used within a CountProvider');
+  }
+  return context;
+}
 
-export { ImageLoader, ImageLoaderContext };
+export { ImageLoader, ImageLoaderContext, useImageLoader };

@@ -1,11 +1,10 @@
-import { useContext } from 'react';
 import ImageWrapper from './ImageLoader/ImageWrapper';
 import ImgButton from './ImgButton';
-import { ImageLoaderContext } from './ImageLoader/ImageLoader';
+import { useImageLoader } from './ImageLoader/ImageLoader';
 import Tile from './Tile';
 
 const PictureTilesInner = ({ images, onPhotoClick }) => {
-  const { onLoad } = useContext(ImageLoaderContext);
+  const { onLoad } = useImageLoader();
 
   return (
     <>
