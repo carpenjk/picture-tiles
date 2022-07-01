@@ -20,7 +20,6 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
-  console.log('🚀 ~ file: PictureTiles.jsx ~ line 23 ~ _images', _images);
   return (
     <ImageLoader numImages={images && images.length ? images.length : 0}>
       <Tiles
