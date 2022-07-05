@@ -5,7 +5,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
   const _images = useMemo(
     () =>
       mapProps(
-        ({ images: imgs, fallbackWidth: width, fallbackHeight: height }) =>
+        ({ images: imgs, width, height }) =>
           imgs.map((img) => ({
             width: parseAndCalc(
               [width, img.colSpan],
@@ -17,7 +17,11 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
             ),
             ...img,
           })),
-        unwindProps({ images, fallbackWidth, fallbackHeight })
+        unwindProps({
+          images,
+          width: fallbackWidth,
+          height: fallbackHeight,
+        })
       ),
     [images, fallbackWidth, fallbackHeight]
   );
@@ -26,6 +30,12 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
     '🚀 ~ file: UseImageSizes.js ~ line 28 ~ useImageSizes ~ _images',
     _images
   );
+  const woundImages = windProps(_images);
+  console.log(
+    '🚀 ~ file: UseImageSizes.js ~ line 30 ~ useImageSizes ~ woundImages',
+    woundImages
+  );
+
   return windProps(_images);
 };
 
