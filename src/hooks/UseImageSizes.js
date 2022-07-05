@@ -5,9 +5,8 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
   const _images = useMemo(
     () =>
       mapProps(
-        ({ images: imgs, fallbackWidth: width, fallbackHeight: height }) => {
-          debugger;
-          return imgs.map((img) => ({
+        ({ images: imgs, fallbackWidth: width, fallbackHeight: height }) =>
+          imgs.map((img) => ({
             width: parseAndCalc(
               [width, img.colSpan],
               ([_width, cSpan]) => _width * cSpan
@@ -17,8 +16,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
               ([_height, rSpan]) => _height * rSpan
             ),
             ...img,
-          }));
-        },
+          })),
         unwindProps({ images, fallbackWidth, fallbackHeight })
       ),
     [images, fallbackWidth, fallbackHeight]
