@@ -19,7 +19,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
             ...img,
           }));
         },
-        unwindProps({ images: [images], fallbackWidth, fallbackHeight })
+        unwindProps({ images, fallbackWidth, fallbackHeight })
       ),
     [images, fallbackWidth, fallbackHeight]
   );
