@@ -12,11 +12,23 @@ import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledGrid = styled.div`
   position: relative;
-  display: flex;
-  width: 100%;
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-template-rows: ${getProp('rowHeight')};
+  grid-auto-rows: ${getProp('rowHeight')};
+  grid-template-columns: ${getProp('gridTemplateColumns')};
+  justify-items: stretch;
+  align-items: stretch;
   height: ${getProp('gridHeight')};
+  width: ${getProp('width')};
   max-width: ${getProp('maxGridWidth')};
   overflow: hidden;
+
+  > *:last-child {
+    grid-row: unset;
+    grid-column: unset;
+    max-height: unset;
+  }
 
   & button {
     width: 100%;
@@ -48,6 +60,10 @@ const StyledGrid = styled.div`
     }
 `}
 `;
+
+StyledGrid.defaultProps = {
+  width: '100%',
+};
 
 function calcProps({
   columns,
