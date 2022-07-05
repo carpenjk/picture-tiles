@@ -3,7 +3,6 @@ import { useRef, useEffect } from 'react';
 import { getProp } from 'dataweaver';
 import GridContainer from './GridContainer';
 import { useImageLoader } from './ImageLoader/ImageLoader';
-import OverlayNavButton from './OverlayButton';
 
 const StyledButtonWrapper = styled.div`
   position: absolute;
