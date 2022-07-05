@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react';
 import { getProp } from 'dataweaver';
 import GridContainer from './GridContainer';
 import { useImageLoader } from './ImageLoader/ImageLoader';
+import OverlayNavButton from './OverlayButton';
 
 const StyledButtonWrapper = styled.div`
   position: absolute;
@@ -21,24 +22,23 @@ StyledButtonWrapper.defaultProps = {
 
 const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
   const { isCompletelyLoaded } = useImageLoader();
-  const { OverlayButton, ...buttonPosProps } = overlayButton;
-  const buttonRef = useRef();
+  const { OverlayButton, ...buttonPosProps } = overlayButton || {};
+  const buttonWrapperRef = useRef();
 
   useEffect(() => {
-    if (isCompletelyLoaded) buttonRef.current.style.visibility = 'visible';
+    if (isCompletelyLoaded)
+      buttonWrapperRef.current.style.visibility = 'visible';
   }, [isCompletelyLoaded]);
 
   return (
     <div style={{ position: 'relative' }}>
       <GridContainer {...props}>{children}</GridContainer>
-      <StyledButtonWrapper {...buttonPosProps}>
-        <OverlayButton
-          ref={buttonRef}
-          style={{ visibility: 'hidden' }}
-          onClick={onOverlayClick}
-        >
-          More Photos
-        </OverlayButton>
+      <StyledButtonWrapper
+        {...buttonPosProps}
+        ref={buttonWrapperRef}
+        style={{ visibility: 'hidden' }}
+      >
+        {OverlayButton && OverlayButton}
       </StyledButtonWrapper>
     </div>
   );
