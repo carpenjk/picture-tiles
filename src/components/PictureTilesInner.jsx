@@ -13,7 +13,7 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
   );
   const { onLoad } = useImageLoader();
   const theme = useContext(ThemeContext);
-  const { br } = useBreakpoints(theme);
+  const br = useBreakpoints(theme);
   console.log('br', br);
   // return images[br.current].map...
   return (
