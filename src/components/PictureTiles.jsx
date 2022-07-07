@@ -28,10 +28,11 @@ const PictureTiles = ({
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme);
 
-  const numImages = useMemo(
-    () => unwindProps({ images }).map((wound) => wound.images.length),
-    [images]
-  );
+  const numImages = useMemo(() => {
+    const test = unwindProps({ images }).map((wound) => wound.images.length);
+    console.log('🚀 ~ file: PictureTiles.jsx ~ line 34 ~ test', test);
+    return test;
+  }, [images]);
   const currBrIndex =
     numImages && numImages[br.indexOfLower]
       ? br.indexOfLower || numImages.length - 1
