@@ -15,8 +15,8 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme);
   const currBrIndex = images[br.indexOfLower]
-    ? images[br.indexOfLower]
-    : images[images.length - 1];
+    ? br.indexOfLower
+    : images.length - 1;
   console.log('br', br);
   console.log(
     '🚀 ~ file: PictureTilesInner.jsx ~ line 18 ~ PictureTilesInner ~ currBrIndex',
