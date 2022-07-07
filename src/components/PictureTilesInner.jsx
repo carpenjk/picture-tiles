@@ -7,23 +7,12 @@ import { useImageLoader } from './ImageLoader/ImageLoader';
 import Tile from './Tile';
 
 const PictureTilesInner = ({ images, onPhotoClick }) => {
-  console.log(
-    '🚀 ~ file: PictureTilesInner.jsx ~ line 7 ~ PictureTilesInner ~ images',
-    images
-  );
   const { onLoad } = useImageLoader();
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme);
   const currBrIndex = images[br.indexOfLower]
     ? br.indexOfLower
     : images.length - 1;
-  console.log('br', br);
-  console.log(
-    '🚀 ~ file: PictureTilesInner.jsx ~ line 18 ~ PictureTilesInner ~ currBrIndex',
-    currBrIndex
-  );
-  // ifreturn images[br.indexOfLower].map.
-
   return (
     <>
       {images[currBrIndex].map((img, i) => (

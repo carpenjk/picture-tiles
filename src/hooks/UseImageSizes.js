@@ -26,26 +26,6 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
       ),
     [images, fallbackWidth, fallbackHeight]
   );
-
-  const unwindImages = unwindProps({
-    images,
-    width: fallbackWidth,
-    height: fallbackHeight,
-  });
-  console.log(
-    '🚀 ~ file: UseImageSizes.js ~ line 34 ~ useImageSizes ~ unwindImages',
-    unwindImages
-  );
-  console.log(
-    '🚀 ~ file: UseImageSizes.js ~ line 28 ~ useImageSizes ~ _images',
-    _images
-  );
-  const woundImages = windProps(_images);
-  console.log(
-    '🚀 ~ file: UseImageSizes.js ~ line 30 ~ useImageSizes ~ woundImages',
-    woundImages
-  );
-
   return windProps({ images: _images });
 };
 

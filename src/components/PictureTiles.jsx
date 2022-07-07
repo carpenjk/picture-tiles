@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { mapProps, unwindProps, windProps } from 'dataweaver';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -21,7 +23,12 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
-  console.log('🚀 ~ file: PictureTiles.jsx ~ line 23 ~ _images', _images);
+  const numImages = useCallback(
+    () =>
+      windProps(mapProps((imgAry) => imgAry.length, unwindProps({ images }))),
+    [images]
+  );
+  console.log('🚀 ~ file: PictureTiles.jsx ~ line 31 ~ numImages', numImages);
   return (
     <ImageLoader numImages={images && images.length ? images.length : 0}>
       <Tiles
