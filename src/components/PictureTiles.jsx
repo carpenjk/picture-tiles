@@ -33,7 +33,7 @@ const PictureTiles = ({
     [images]
   );
   return (
-    <ImageLoader numImages={numImages[br.current]}>
+    <ImageLoader numImages={numImages[br.indexOfLower]}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
