@@ -1,3 +1,6 @@
+import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
+import { ThemeContext } from 'styled-components';
+import { useContext } from 'react';
 import ImageWrapper from './ImageLoader/ImageWrapper';
 import ImgButton from './ImgButton';
 import { useImageLoader } from './ImageLoader/ImageLoader';
@@ -9,10 +12,13 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
     images
   );
   const { onLoad } = useImageLoader();
+  const theme = useContext(ThemeContext);
+  const { br } = useBreakpoints(theme);
 
+  // return images[br.current].map...
   return (
     <>
-      {images.map((img, i) => (
+      {images[br.indexOfLower].map((img, i) => (
         <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
           <ImageWrapper id={i}>
             <ImgButton

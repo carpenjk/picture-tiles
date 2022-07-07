@@ -2,6 +2,7 @@ import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
 import useImageSizes from '../hooks/UseImageSizes';
+import ClientOnly from './ClientOnly';
 
 const PictureTiles = ({
   columns,
@@ -38,7 +39,9 @@ const PictureTiles = ({
         onOverlayClick={onOverlayClick}
         overlayButton={overlayButton}
       >
-        <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
+        <ClientOnly>
+          <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
+        </ClientOnly>
       </Tiles>
     </ImageLoader>
   );
