@@ -14,11 +14,15 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
   const { onLoad } = useImageLoader();
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme);
+  const currBrIndex = images[br.indexOfLower]
+    ? images[br.indexOfLower]
+    : images[images.length - 1];
   console.log('br', br);
-  // return images[br.current].map...
+  // ifreturn images[br.indexOfLower].map.
+
   return (
     <>
-      {images[br.indexOfLower].map((img, i) => (
+      {images[currBrIndex].map((img, i) => (
         <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
           <ImageWrapper id={i}>
             <ImgButton
