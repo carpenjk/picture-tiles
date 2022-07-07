@@ -33,10 +33,9 @@ const PictureTiles = ({
     console.log('🚀 ~ file: PictureTiles.jsx ~ line 34 ~ test', test);
     return test;
   }, [images]);
-  const currBrIndex =
-    numImages && numImages[br.indexOfLower]
-      ? br.indexOfLower || numImages.length - 1
-      : undefined;
+  const currBrIndex = !numImages
+    ? undefined
+    : br.indexOfLower || numImages.length - 1;
   console.log(
     '🚀 ~ file: PictureTiles.jsx ~ line 36 ~ currBrIndex',
     currBrIndex
