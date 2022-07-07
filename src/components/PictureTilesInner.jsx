@@ -18,6 +18,10 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
     ? images[br.indexOfLower]
     : images[images.length - 1];
   console.log('br', br);
+  console.log(
+    '🚀 ~ file: PictureTilesInner.jsx ~ line 18 ~ PictureTilesInner ~ currBrIndex',
+    currBrIndex
+  );
   // ifreturn images[br.indexOfLower].map.
 
   return (
