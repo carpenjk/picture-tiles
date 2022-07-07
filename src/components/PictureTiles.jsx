@@ -8,6 +8,11 @@ import { ImageLoader } from './ImageLoader/ImageLoader';
 import useImageSizes from '../hooks/UseImageSizes';
 import ClientOnly from './ClientOnly';
 
+function getPropIndex(prop, br) {
+  if (!prop) return undefined;
+  if (!Array.isArray(prop)) return prop;
+  return prop[br] || prop[prop.length - 1];
+}
 const PictureTiles = ({
   columns,
   columnWidth,
@@ -33,15 +38,14 @@ const PictureTiles = ({
     console.log('🚀 ~ file: PictureTiles.jsx ~ line 34 ~ test', test);
     return test;
   }, [images]);
-  const currBrIndex = !numImages
-    ? undefined
-    : br.indexOfLower || numImages.length - 1;
+  const currBrIndex = getPropIndex(numImages, br.indexOfLower);
   console.log(
-    '🚀 ~ file: PictureTiles.jsx ~ line 36 ~ currBrIndex',
+    '🚀 ~ file: PictureTiles.jsx ~ line 42 ~ currBrIndex',
     currBrIndex
   );
+
   return (
-    <ImageLoader numImages={numImages[currBrIndex]}>
+    <ImageLoader numImages={currBrIndex}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
