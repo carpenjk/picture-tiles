@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { mapProps, unwindProps, windProps } from 'dataweaver';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
@@ -23,7 +23,7 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
-  const numImages = useCallback(
+  const numImages = useMemo(
     () =>
       windProps(mapProps((imgAry) => imgAry.length, unwindProps({ images }))),
     [images]
