@@ -11,7 +11,7 @@ import ClientOnly from './ClientOnly';
 function getPropIndex(prop, br) {
   if (!prop) return undefined;
   if (!Array.isArray(prop)) return prop;
-  return prop[br] || prop[prop.length - 1];
+  return prop[br] || prop.length - 1;
 }
 const PictureTiles = ({
   columns,
