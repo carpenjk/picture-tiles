@@ -24,8 +24,7 @@ const PictureTiles = ({
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
   const numImages = useMemo(
-    () =>
-      windProps(mapProps((imgAry) => imgAry.length, unwindProps({ images }))),
+    () => mapProps((imgAry) => imgAry.length, unwindProps({ images })),
     [images]
   );
   console.log('🚀 ~ file: PictureTiles.jsx ~ line 31 ~ numImages', numImages);
