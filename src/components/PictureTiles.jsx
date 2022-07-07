@@ -36,9 +36,12 @@ const PictureTiles = ({
     numImages && numImages[br.indexOfLower]
       ? br.indexOfLower || numImages.length - 1
       : undefined;
-
+  console.log(
+    '🚀 ~ file: PictureTiles.jsx ~ line 36 ~ currBrIndex',
+    currBrIndex
+  );
   return (
-    <ImageLoader numImages={currBrIndex}>
+    <ImageLoader numImages={numImages[currBrIndex]}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
