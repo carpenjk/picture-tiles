@@ -32,8 +32,13 @@ const PictureTiles = ({
     () => unwindProps({ images }).map((wound) => wound.images.length),
     [images]
   );
+  const currBrIndex =
+    numImages && numImages[br.indexOfLower]
+      ? br.indexOfLower || numImages.length - 1
+      : undefined;
+
   return (
-    <ImageLoader numImages={numImages[br.indexOfLower]}>
+    <ImageLoader numImages={currBrIndex}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}

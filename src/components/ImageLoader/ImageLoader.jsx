@@ -19,7 +19,10 @@ const ImageLoader = ({ children, numImages }) => {
   }, []);
 
   useEffect(() => {
-    if (count >= numImages) setIsCompletelyLoaded(true);
+    if (count >= numImages) {
+      console.log('set completely loaded');
+      setIsCompletelyLoaded(true);
+    }
   }, [count, numImages]);
   const value = useMemo(
     () => ({ onLoad, count, isCompletelyLoaded, images }),
