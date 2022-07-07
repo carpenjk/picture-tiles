@@ -10,8 +10,7 @@ import {
 const ImageLoaderContext = createContext();
 const ImageLoader = ({ children, numImages }) => {
   const [isCompletelyLoaded, setIsCompletelyLoaded] = useState();
-  const [images, setImages] = useState({});
-
+  const [images, setImages] = useState([{}]);
   const [count, setCount] = useState(0);
 
   const onLoad = useCallback((id) => {

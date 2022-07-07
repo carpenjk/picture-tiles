@@ -1,5 +1,7 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { mapProps, unwindProps, windProps } from 'dataweaver';
+import { ThemeContext } from 'styled-components';
+import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -23,13 +25,15 @@ const PictureTiles = ({
   overlayButton,
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
+  const theme = useContext(ThemeContext);
+  const br = useBreakpoints(theme);
+
   const numImages = useMemo(
     () => unwindProps({ images }).map((wound) => wound.images.length),
     [images]
   );
-  console.log('🚀 ~ file: PictureTiles.jsx ~ line 31 ~ numImages', numImages);
   return (
-    <ImageLoader numImages={images && images.length ? images.length : 0}>
+    <ImageLoader numImages={numImages[br.current]}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
