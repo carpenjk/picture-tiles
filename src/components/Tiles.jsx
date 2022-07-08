@@ -4,6 +4,11 @@ import { getProp } from 'dataweaver';
 import GridContainer from './GridContainer';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 
+const StyledTileWrapper = styled.div`
+  position: relative;
+  width: ${getProp('width')};
+  gridwidth: ${getProp('gridWidth')};
+`;
 const StyledButtonWrapper = styled.div`
   position: absolute;
   top: ${getProp('top')};
@@ -19,7 +24,14 @@ StyledButtonWrapper.defaultProps = {
   left: 'auto',
 };
 
-const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
+const Tiles = ({
+  children,
+  onOverlayClick,
+  overlayButton,
+  gridWidth,
+  width,
+  ...remGridProps
+}) => {
   const { isCompletelyLoaded } = useImageLoader();
   const { OverlayButton, ...buttonPosProps } = overlayButton || {};
   const buttonWrapperRef = useRef();
@@ -30,8 +42,10 @@ const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
   }, [isCompletelyLoaded]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <GridContainer {...props}>{children}</GridContainer>
+    <StyledTileWrapper width={width} gridWidth={gridWidth}>
+      <GridContainer width={width} gridWidth={gridWidth} {...remGridProps}>
+        {children}
+      </GridContainer>
       <StyledButtonWrapper
         {...buttonPosProps}
         ref={buttonWrapperRef}
@@ -39,7 +53,7 @@ const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
       >
         {OverlayButton && OverlayButton}
       </StyledButtonWrapper>
-    </div>
+    </StyledTileWrapper>
   );
 };
 
