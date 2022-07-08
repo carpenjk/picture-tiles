@@ -30,7 +30,7 @@ const Tiles = ({ children, onOverlayClick, overlayButton, ...props }) => {
   }, [isCompletelyLoaded]);
 
   return (
-    <div style={{ position: 'reltive' }}>
+    <div style={{ position: 'relative' }}>
       <GridContainer {...props}>{children}</GridContainer>
       <StyledButtonWrapper
         {...buttonPosProps}
