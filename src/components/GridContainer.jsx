@@ -20,7 +20,7 @@ const StyledGrid = styled.div`
   justify-items: stretch;
   align-items: stretch;
   height: ${getProp('gridHeight')};
-  width: ${getProp('width')};
+  width: ${getProp('gridWidth')};
   max-width: ${getProp('maxGridWidth')};
   overflow: hidden;
 
@@ -50,7 +50,7 @@ const StyledGrid = styled.div`
     justify-items: stretch;
     align-items: stretch;
     height: ${getProp('gridHeight')};
-    width: ${getProp('width')};
+    width: ${getProp('gridWidth')};
     max-width: ${getProp('maxGridWidth')};
 
     > *:last-child {
@@ -62,7 +62,7 @@ const StyledGrid = styled.div`
 `;
 
 StyledGrid.defaultProps = {
-  width: '100%',
+  gridWidth: '100%',
 };
 
 function calcProps({

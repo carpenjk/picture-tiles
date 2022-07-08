@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useRef, useEffect } from 'react';
 import { getProp } from 'dataweaver';
+import { breakpoint } from 'themeweaver';
 import GridContainer from './GridContainer';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 
@@ -8,6 +9,10 @@ const StyledTileWrapper = styled.div`
   position: relative;
   width: ${getProp('gridWidth')};
   max-width: ${getProp('maxGridWidth')};
+  ${breakpoint(1)`
+    width: ${getProp('gridWidth')};
+    max-width: ${getProp('maxGridWidth')};
+  `}
 `;
 const StyledButtonWrapper = styled.div`
   position: absolute;
@@ -16,6 +21,10 @@ const StyledButtonWrapper = styled.div`
   bottom: ${getProp('bottom')};
   left: ${getProp('left')};
 `;
+
+StyledTileWrapper.defaultProps = {
+  gridWidth: '100%',
+};
 
 StyledButtonWrapper.defaultProps = {
   bottom: '20px',
