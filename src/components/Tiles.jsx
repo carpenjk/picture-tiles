@@ -6,8 +6,8 @@ import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledTileWrapper = styled.div`
   position: relative;
-  width: ${getProp('width')};
-  gridwidth: ${getProp('gridWidth')};
+  width: ${getProp('gridWidth')};
+  max-width: ${getProp('maxGridWidth')};
 `;
 const StyledButtonWrapper = styled.div`
   position: absolute;
@@ -29,7 +29,7 @@ const Tiles = ({
   onOverlayClick,
   overlayButton,
   gridWidth,
-  width,
+  maxGridWidth,
   ...remGridProps
 }) => {
   const { isCompletelyLoaded } = useImageLoader();
@@ -42,8 +42,12 @@ const Tiles = ({
   }, [isCompletelyLoaded]);
 
   return (
-    <StyledTileWrapper width={width} gridWidth={gridWidth}>
-      <GridContainer width={width} gridWidth={gridWidth} {...remGridProps}>
+    <StyledTileWrapper gridWidth={gridWidth} maxGridWidth={maxGridWidth}>
+      <GridContainer
+        gridWidth={gridWidth}
+        maxGridWidth={maxGridWidth}
+        {...remGridProps}
+      >
         {children}
       </GridContainer>
       <StyledButtonWrapper
