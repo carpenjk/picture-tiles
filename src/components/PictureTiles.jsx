@@ -35,14 +35,9 @@ const PictureTiles = ({
 
   const numImages = useMemo(() => {
     const test = unwindProps({ images }).map((wound) => wound.images.length);
-    console.log('🚀 ~ file: PictureTiles.jsx ~ line 34 ~ test', test);
     return test;
   }, [images]);
   const currBrIndex = getPropIndex(numImages, br.indexOfLower);
-  console.log(
-    '🚀 ~ file: PictureTiles.jsx ~ line 42 ~ currBrIndex',
-    currBrIndex
-  );
 
   return (
     <ImageLoader numImages={currBrIndex}>
