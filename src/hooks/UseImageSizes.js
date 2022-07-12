@@ -26,7 +26,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
       ),
     [images, fallbackWidth, fallbackHeight]
   );
-  return windProps(_images);
+  return windProps(_images).images;
 };
 
 export default useImageSizes;
