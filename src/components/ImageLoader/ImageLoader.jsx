@@ -12,7 +12,6 @@ const ImageLoader = ({ children, numImages }) => {
   const [isCompletelyLoaded, setIsCompletelyLoaded] = useState();
   const [images, setImages] = useState({});
   const [count, setCount] = useState(0);
-  console.log('render imageLoader');
   const onLoad = useCallback((id) => {
     setImages((prev) => ({ ...prev, [id]: true }));
     setCount((prev) => prev + 1);
@@ -20,7 +19,6 @@ const ImageLoader = ({ children, numImages }) => {
 
   useEffect(() => {
     if (count >= numImages) {
-      console.log('set completely loaded');
       setIsCompletelyLoaded(true);
     }
   }, [count, numImages]);
