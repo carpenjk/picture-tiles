@@ -7,6 +7,10 @@ import { useImageLoader } from './ImageLoader/ImageLoader';
 import Tile from './Tile';
 
 const PictureTilesInner = ({ images, onPhotoClick }) => {
+  console.log(
+    '🚀 ~ file: PictureTilesInner.jsx ~ line 10 ~ PictureTilesInner ~ images',
+    images
+  );
   const { onLoad } = useImageLoader();
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme);
