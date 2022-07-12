@@ -62,7 +62,7 @@ const PictureTiles = ({
         overlayButton={overlayButton}
       >
         <ClientOnly>
-          <PictureTilesInner onPhotoClick={onPhotoClick} images={images} />
+          <PictureTilesInner onPhotoClick={onPhotoClick} images={_images} />
         </ClientOnly>
       </Tiles>
     </ImageLoader>
