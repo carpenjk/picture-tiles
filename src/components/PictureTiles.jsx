@@ -40,7 +40,7 @@ const PictureTiles = ({
   const currBrIndex = getPropIndex(numImages, br.indexOfLower);
 
   return (
-    <ImageLoader numImages={currBrIndex}>
+    <ImageLoader numImages={numImages[currBrIndex]}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
