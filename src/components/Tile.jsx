@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledTile = styled.div`
   position: relative;
   grid-row: auto / span ${getProp('rowSpan')};
-  grid-column: auto / span ${getProp('rowSpan')};
+  grid-column: auto / span ${getProp('colSpan')};
 
   > * {
     width: 100%;
