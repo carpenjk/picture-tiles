@@ -1,5 +1,5 @@
-import { useCallback, useContext, useMemo } from 'react';
-import { mapProps, unwindProps, windProps } from 'dataweaver';
+import { useContext, useMemo } from 'react';
+import { unwindProps, getPropIndex } from 'dataweaver';
 import { ThemeContext } from 'styled-components';
 import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
 import Tiles from './Tiles';
@@ -8,11 +8,6 @@ import { ImageLoader } from './ImageLoader/ImageLoader';
 import useImageSizes from '../hooks/UseImageSizes';
 import ClientOnly from './ClientOnly';
 
-function getPropIndex(prop, br) {
-  if (!prop) return undefined;
-  if (!Array.isArray(prop)) return prop;
-  return prop[br] || prop.length - 1;
-}
 const PictureTiles = ({
   columns,
   columnWidth,
