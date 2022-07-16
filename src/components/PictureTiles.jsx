@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react';
-import { unwindProps, getPropIndex } from 'dataweaver';
+import { unwindProps, getIndexedPropValue } from 'dataweaver';
 import { ThemeContext } from 'styled-components';
 import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
 import Tiles from './Tiles';
@@ -32,10 +32,9 @@ const PictureTiles = ({
     const test = unwindProps({ images }).map((wound) => wound.images.length);
     return test;
   }, [images]);
-  const currBrIndex = getPropIndex(numImages, br.indexOfLower);
 
   return (
-    <ImageLoader numImages={numImages[currBrIndex]}>
+    <ImageLoader numImages={getIndexedPropValue(numImages, br.indexOfLower)}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
