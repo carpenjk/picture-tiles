@@ -15,12 +15,10 @@ const ImageLoader = ({ children, numImages }) => {
 
   useEffect(() => {
     // reset count when numImages changes
-    console.log('reset count');
     setImages({});
     setCount(0);
   }, [numImages]);
   const onLoad = useCallback((id) => {
-    console.log(`onload set count ${id}`);
     setImages((prev) => ({ ...prev, [id]: true }));
     setCount((prev) => prev + 1);
   }, []);
