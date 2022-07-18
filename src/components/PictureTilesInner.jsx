@@ -18,7 +18,11 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
       {images[currBrIndex].map((img, i) => {
         const { rowSpan, colSpan, ...imgProps } = img;
         return (
-          <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
+          <Tile
+            key={`${currBrIndex}${i}`}
+            rowSpan={img.rowSpan}
+            colSpan={img.colSpan}
+          >
             <ImageWrapper id={i}>
               <ImgButton
                 type="button"
