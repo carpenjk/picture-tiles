@@ -15,22 +15,22 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
     : images.length - 1;
   return (
     <>
-      {images[currBrIndex].map((img, i) => (
-        <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
-          <ImageWrapper id={i}>
-            <ImgButton
-              type="button"
-              onLoad={() => onLoad(i)}
-              onClick={() => onPhotoClick(i)}
-              loading="lazy"
-              src={img.src}
-              width={img.width}
-              height={img.height}
-              alt="property"
-            />
-          </ImageWrapper>
-        </Tile>
-      ))}
+      {images[currBrIndex].map((img, i) => {
+        const { rowSpan, colSpan, ...imgProps } = img;
+        return (
+          <Tile key={i} rowSpan={img.rowSpan} colSpan={img.colSpan}>
+            <ImageWrapper id={i}>
+              <ImgButton
+                type="button"
+                onLoad={() => onLoad(i)}
+                onClick={() => onPhotoClick(i)}
+                loading="lazy"
+                {...imgProps}
+              />
+            </ImageWrapper>
+          </Tile>
+        );
+      })}
     </>
   );
 };
