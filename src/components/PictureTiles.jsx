@@ -29,12 +29,12 @@ const PictureTiles = ({
   const br = useBreakpoints(theme);
 
   const numImages = useMemo(() => {
-    const test = unwindProps({ images }).map((wound) => wound.images.length);
-    return test;
-  }, [images]);
+    const valAry = unwindProps({ images }).map((wound) => wound.images.length);
+    return getIndexedPropValue(valAry, br.indexOfLower);
+  }, [images, br.indexOfLower]);
 
   return (
-    <ImageLoader numImages={getIndexedPropValue(numImages, br.indexOfLower)}>
+    <ImageLoader numImages={numImages}>
       <Tiles
         columns={columns}
         columnWidth={columnWidth}
