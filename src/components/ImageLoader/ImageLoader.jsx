@@ -13,6 +13,7 @@ const ImageLoader = ({ children, numImages }) => {
   const [images, setImages] = useState({});
   const [count, setCount] = useState(0);
   const onLoad = useCallback((id) => {
+    console.log('onload set count');
     setImages((prev) => ({ ...prev, [id]: true }));
     setCount((prev) => prev + 1);
   }, []);
