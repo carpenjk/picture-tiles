@@ -36,7 +36,12 @@ const PictureTiles = ({
       '🚀 ~ file: PictureTiles.jsx ~ line 34 ~ numImages ~ valAry',
       valAry
     );
-    return getIndexedPropValue(windProps(valAry), br.indexOfLower);
+    const indexedPropValue = getIndexedPropValue(valAry, br.indexOfLower);
+    console.log(
+      '🚀 ~ file: PictureTiles.jsx ~ line 40 ~ numImages ~ indexedPropValue',
+      indexedPropValue
+    );
+    return indexedPropValue;
   }, [images, br.indexOfLower]);
 
   return (
