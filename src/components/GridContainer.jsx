@@ -67,19 +67,21 @@ StyledGrid.defaultProps = {
   gridWidth: '100%',
 };
 
-function calcProps({
-  columns,
-  columnWidth,
-  gridHeight,
-  gridWidth,
-  images,
-  maxGridWidth,
-  rows,
-  rowHeight,
-  minColWidth,
-  maxColWidth,
-  rowWidth,
-}) {
+function calcProps(props) {
+  const {
+    columns,
+    columnWidth,
+    gridHeight,
+    gridWidth,
+    images,
+    maxGridWidth,
+    rows,
+    rowHeight,
+    minColWidth,
+    maxColWidth,
+    rowWidth,
+  } = props;
+
   function getRowHeight() {
     if (gridHeight) {
       const _gridHeight = parseSizeUnits(gridHeight);
@@ -106,6 +108,7 @@ function calcProps({
   const _rowHeight = getRowHeight();
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
   return {
+    ...props,
     columns,
     columnWidth,
     gridHeight,
