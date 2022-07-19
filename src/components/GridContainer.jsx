@@ -80,6 +80,10 @@ function calcProps({
 }) {
   function getRowHeight() {
     if (gridHeight) {
+      console.log(
+        '🚀 ~ file: GridContainer.jsx ~ line 83 ~ getRowHeight ~ gridHeight',
+        gridHeight
+      );
       const _gridHeight = parseSizeUnits(gridHeight);
       return `${_gridHeight.value / rows}${_gridHeight.unit}`;
     }
