@@ -36,7 +36,7 @@ const StyledGrid = styled.div`
   }
   & button > img {
     flex: none;
-    object-fit: cover;
+    object-fit: ${getProp('imageFit')};
     height: 100%;
     width: 100%;
     cursor: pointer;
@@ -52,7 +52,9 @@ const StyledGrid = styled.div`
     height: ${getProp('gridHeight')};
     width: ${getProp('gridWidth')};
     max-width: ${getProp('maxGridWidth')};
-
+    & button > img {
+      object-fit: ${getProp('imageFit')};
+    }
     > *:last-child {
       grid-row: unset;
       grid-column: unset;
