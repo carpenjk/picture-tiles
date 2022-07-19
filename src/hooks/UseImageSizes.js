@@ -2,6 +2,7 @@ import { mapProps, unwindProps, windProps, parseAndCalc } from 'dataweaver';
 import { useMemo } from 'react';
 
 const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
+  debugger;
   const _images = useMemo(
     () =>
       mapProps(
