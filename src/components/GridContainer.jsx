@@ -125,13 +125,20 @@ function calcProps(props) {
 }
 
 const GridContainer = ({ images, children, ...props }) => {
+  console.log(
+    '🚀 ~ file: GridContainer.jsx ~ line 128 ~ GridContainer ~ images',
+    images
+  );
   const { isCompletelyLoaded } = useImageLoader();
-  const calculatedProps = mapProps(
-    calcProps,
-    unwindProps({
-      ...props,
-      images: [images],
-    })
+  // const calculatedProps = mapProps(
+  //   calcProps,
+  //   unwindProps({
+  //     ...props,
+  //     images: [images],
+  //   })
+  // );
+  const calculatedProps = unwindProps({ ...props, images: [images] }).map(
+    (propsAry) => calcProps(propsAry)
   );
   return (
     <StyledGrid {...windProps(calculatedProps)}>
