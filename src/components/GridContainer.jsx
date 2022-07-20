@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { breakpoint } from 'themeweaver';
-import {
-  unwindProps,
-  getProp,
-  mapProps,
-  parseSizeUnits,
-  windProps,
-} from 'dataweaver';
+import { unwindProps, getProp, parseSizeUnits, windProps } from 'dataweaver';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 
@@ -104,6 +98,10 @@ function calcProps(props) {
     return width;
   }
 
+  console.log(
+    '🚀 ~ file: GridContainer.jsx ~ line 102 ~ calcProps ~ images',
+    images
+  );
   const imgCount = images && images.length ? images.length : 0;
   const _rowHeight = getRowHeight();
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
@@ -125,10 +123,6 @@ function calcProps(props) {
 }
 
 const GridContainer = ({ images, children, ...props }) => {
-  console.log(
-    '🚀 ~ file: GridContainer.jsx ~ line 128 ~ GridContainer ~ images',
-    images
-  );
   const { isCompletelyLoaded } = useImageLoader();
   // const calculatedProps = mapProps(
   //   calcProps,
@@ -137,8 +131,8 @@ const GridContainer = ({ images, children, ...props }) => {
   //     images: [images],
   //   })
   // );
-  const calculatedProps = unwindProps({ ...props, images: [images] }).map(
-    (propsAry) => calcProps(propsAry)
+  const calculatedProps = unwindProps(props).map((propsAry) =>
+    calcProps(propsAry)
   );
   return (
     <StyledGrid {...windProps(calculatedProps)}>
