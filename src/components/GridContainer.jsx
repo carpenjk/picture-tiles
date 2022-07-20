@@ -131,7 +131,7 @@ const GridContainer = ({ images, children, ...props }) => {
   //     images: [images],
   //   })
   // );
-  const calculatedProps = unwindProps(props).map((propsAry) =>
+  const calculatedProps = unwindProps({ ...props, images }).map((propsAry) =>
     calcProps(propsAry)
   );
   return (
