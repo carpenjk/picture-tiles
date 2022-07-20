@@ -97,11 +97,6 @@ function calcProps(props) {
     }
     return width;
   }
-
-  console.log(
-    '🚀 ~ file: GridContainer.jsx ~ line 102 ~ calcProps ~ images',
-    images
-  );
   const imgCount = images && images.length ? images.length : 0;
   const _rowHeight = getRowHeight();
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
@@ -124,13 +119,6 @@ function calcProps(props) {
 
 const GridContainer = ({ images, children, ...props }) => {
   const { isCompletelyLoaded } = useImageLoader();
-  // const calculatedProps = mapProps(
-  //   calcProps,
-  //   unwindProps({
-  //     ...props,
-  //     images: [images],
-  //   })
-  // );
   const calculatedProps = unwindProps({ ...props, images }).map((propsAry) =>
     calcProps(propsAry)
   );
