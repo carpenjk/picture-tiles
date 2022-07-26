@@ -1,4 +1,4 @@
-import { getProp } from 'prop-x';
+import { getProp } from 'prop-x/css';
 import styled from 'styled-components';
 
 const StyledTile = styled.div`

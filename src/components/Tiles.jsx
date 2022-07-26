@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useRef, useEffect } from 'react';
-import { getProp } from 'prop-x';
-import { breakpoint } from 'prop-x/css';
+import { getProp, breakpoint } from 'prop-x/css';
 import GridContainer from './GridContainer';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 
