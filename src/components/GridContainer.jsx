@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { breakpoint } from 'themeweaver';
-import { unwindProps, getProp, parseSizeUnits, windProps } from 'dataweaver';
+import { breakpoint } from 'prop-x/css';
+import { unwindProps, getProp, parseSizeUnits, windProps } from 'prop-x';
 import InlineSpinner from './inlineSpinner/InlineSpinner';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 

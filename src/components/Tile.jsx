@@ -1,4 +1,4 @@
-import { getProp } from 'dataweaver';
+import { getProp } from 'prop-x';
 import styled from 'styled-components';
 
 const StyledTile = styled.div`

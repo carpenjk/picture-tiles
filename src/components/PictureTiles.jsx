@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
-import { unwindProps, getIndexedPropValue } from 'dataweaver';
+import { unwindProps, getIndexedPropValue } from 'prop-x';
 import { ThemeContext } from 'styled-components';
-import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
+import { useBreakpoints } from 'prop-x/useBreakpoints';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';

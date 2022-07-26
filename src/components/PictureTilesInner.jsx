@@ -1,7 +1,7 @@
-import { useBreakpoints } from 'themeweaver/lib/UseBreakpoints';
 import { ThemeContext } from 'styled-components';
 import { useContext } from 'react';
-import { getPropIndex } from 'dataweaver';
+import { useBreakpoints } from 'prop-x/useBreakpoints';
+import { getPropIndex } from 'prop-x';
 import ImageWrapper from './ImageLoader/ImageWrapper';
 import ImgButton from './ImgButton';
 import { useImageLoader } from './ImageLoader/ImageLoader';

@@ -46,15 +46,13 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "dataweaver": "github:carpenjk/dataweaver",
+    "prop-x": "github:carpenjk/prop-x",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.1.1",
-    "themeweaver": "github:carpenjk/themeweaver"
+    "styled-components": "^5.1.1"
   },
   "peerDependencies": {
-    "dataweaver": "github:carpenjk/dataweaver",
-    "themeweaver": "github:carpenjk/themeweaver",
+    "prop-x": "github:carpenjk/prop-x",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.1.1"
