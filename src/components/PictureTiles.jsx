@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
-import { unwindProps, getIndexedPropValue } from 'prop-x';
+import { unwindProps, getIndexedPropValue } from '@carpenjk/prop-x';
 import { ThemeContext } from 'styled-components';
-import { useBreakpoints } from 'prop-x/useBreakpoints';
+import { useBreakpoints } from '@carpenjk/prop-x/useBreakpoints';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import { ImageLoader } from './ImageLoader/ImageLoader';
@@ -30,7 +30,6 @@ const PictureTiles = ({
   const br = useBreakpoints(theme);
 
   const numImages = useMemo(() => {
-    // const valAry = unwindProps({ images }).map((wound) => wound.images.length);
     const valAry = unwindProps({ images }).map((wound) => wound.images.length);
     const indexedPropValue = getIndexedPropValue(valAry, br.indexOfLower);
     return indexedPropValue;

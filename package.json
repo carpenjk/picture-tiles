@@ -46,15 +46,15 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "prop-x": "github:carpenjk/prop-x",
+    "@carpenjk/prop-x": "^1.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {
-    "prop-x": "github:carpenjk/prop-x",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "@carpenjk/prop-x": "^1.0.2"
   }
 }
