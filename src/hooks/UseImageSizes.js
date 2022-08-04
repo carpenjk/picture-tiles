@@ -1,4 +1,4 @@
-import { unwindProps, windProps, parseAndCalc } from 'prop-x';
+import { unwindProps, windProps, parseAndCalc } from '@carpenjk/prop-x';
 import { useMemo } from 'react';
 
 const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
