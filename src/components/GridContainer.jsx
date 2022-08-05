@@ -73,7 +73,6 @@ function calcProps(props) {
     rowHeight,
     minColWidth,
     maxColWidth,
-    rowWidth,
   } = props;
 
   function getRowHeight() {
@@ -113,7 +112,6 @@ function calcProps(props) {
     rowHeight: _rowHeight,
     rows,
     minColWidth,
-    rowWidth,
   };
 }
 
