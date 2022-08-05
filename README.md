@@ -15,7 +15,7 @@ This is a reusable component that displays a grid of pictures. This component us
 ### usage
 
 #### Fixed Number of Columns (using rowHeight)
-To used a fixed number of columns with an unknown number of rows, set columns to an integer and provide a rowHeight.
+Set columns to an integer and provide a rowHeight.
 
 **Use Cases**
   --use when you want a specific number of columns no mater what
