@@ -310,9 +310,9 @@ return (
 | gridWidth                 	| as needed                	| Y              	|
 | maxGridWidth              	| as needed                	| Y              	|
 | minColWidth               	| as needed                	| Y              	|
+| maxColWidth               	| as needed                	| Y              	|
 | columnWidth               	| as needed                	| Y              	|
-| rowWidth                  	| as needed                	| Y              	|
-| rowHeight                 	| as needed                	| Y              	|
+| imageFit                  	| as needed                	| Y              	|
 | onPhotoClick              	| optional                 	| N              	|
 | overlayButton             	| optional                 	| N              	|
 |                           	|                          	|                	|
@@ -369,15 +369,6 @@ The gridHeight property sets the height of the grid with any valid css size stri
 
   gridHeight={["100vh", "70vh"]}
 ```
-### rowHeight
-The rowHeight property sets the row heights in the grid with any valid css size string.
-
-```js
-//acceptable values ex.
-  rowHeight="250px"
-
-  rowHeight={["100px", "250px"]}
-```
 
 ### gridWidth
 The gridWidth property sets the width of the grid with any valid css size string.
@@ -399,26 +390,71 @@ The maxGridWidth property sets the maximum grid width with any valid css size st
   maxGridWidth={["100%", "1300px"]}
 ```
 
-### minColWidth
-The minColWidth property sets the minimum column width  with any valid css size string.
+### columnWidth
+The columnWidth property sets the row heights in the grid with any valid css grid track size string including a length, percentage, or fraction of free space..
 
 ```js
 //acceptable values ex.
-  maxGridWidth="1300px"
+  columnWidth="130px"
 
-  maxGridWidth={["100%", "1300px"]}
+  columnWidth={["10%", "200px"]}
+  
+  columnWidth={["130px", "1fr"]}
+```
+
+### minColWidth
+The minColWidth property sets the minimum column width with any valid css grid track size string including a length, percentage, or fraction of free space.
+
+```js
+//acceptable values ex.
+  minColWidth="130px"
+
+  minColWidth={["130px", "15%"]}
 ```
 
 
-### columnWidth
-The columnWidth property sets the row heights in the grid with any valid css size string.
+### maxColWidth
+The maxColWidth property sets the minimum column width with any valid css grid track size string including a length, percentage, or fraction of free space.
 
-### rowWidth
-The rowWidth property sets the row heights in the grid with any valid css size string.
+```js
+//acceptable values ex.
+  maxColWidth="130px"
 
+  maxColWidth={["130px", "200px"]}
+  
+  maxColWidth={["130px", "1fr"]}
+```
 ### rowHeight
-The rowHeight property sets the row heights in the grid with any valid css size string. Use this property or use gridHeight and rows properties.
+The rowHeight property sets the row heights in the grid  with any valid css grid track size string including a length, percentage, or fraction of free space.
+
+```js
+//acceptable values ex.
+  rowHeight="250px"
+
+  rowHeight={["100px", "250px"]}
+```
 
 ### onPhotoClick
+The onPhotoClick property sets the action that is performed when a photo is has an onClick event. The index of the image is passed into the function.
+
+```js
+
+  function handlePhotoClick(i){
+    //do something
+  }
+
+  onPhotoClick={handlePhotoClick}
+```
 
 ### overlayButton
+The overlayButton property is a component representing a button which is overlayed onto the grid. A common usage would be to open a lightbox of larger images.
+
+```js
+  overlayButton={{
+              OverlayButton: (
+                <OverlayNavButton onClick={handleLightboxOpen}>
+                  More Photos
+                </OverlayNavButton>
+              ),
+            }}
+```
