@@ -1,5 +1,5 @@
 # picture-tiles
-displays a grid of pictures
+Displays a grid of pictures.
 
 
 ## Overview
@@ -309,13 +309,12 @@ return (
 | gridHeight \|\| rowHeight 	| required                 	| Y              	|
 | gridWidth                 	| as needed                	| Y              	|
 | maxGridWidth              	| as needed                	| Y              	|
+| columnWidth               	| as needed                	| Y              	|
 | minColWidth               	| as needed                	| Y              	|
 | maxColWidth               	| as needed                	| Y              	|
-| columnWidth               	| as needed                	| Y              	|
 | imageFit                  	| as needed                	| Y              	|
 | onPhotoClick              	| optional                 	| N              	|
 | overlayButton             	| optional                 	| N              	|
-|                           	|                          	|                	|
 
 
 ### Responsive Properties
