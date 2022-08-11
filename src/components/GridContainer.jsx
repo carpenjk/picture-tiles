@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakpoint, getProp } from '@carpenjk/prop-x/css';
 import { unwindProps, parseSizeUnits, windProps } from '@carpenjk/prop-x';
-import InlineSpinner from './inlineSpinner/InlineSpinner';
+import InlineSpinner from '@carpenjk/inline-spinner';
 import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledGrid = styled.div`
