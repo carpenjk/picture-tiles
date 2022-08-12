@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useRef, useEffect } from 'react';
 import { getProp, breakpoint } from '@carpenjk/prop-x/css';
+import { useImageLoader } from '@carpenjk/image-loader';
 import GridContainer from './GridContainer';
-import { useImageLoader } from './ImageLoader/ImageLoader';
 
 const StyledTileWrapper = styled.div`
   position: relative;
