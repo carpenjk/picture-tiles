@@ -3,7 +3,7 @@ Displays a grid of pictures.
 
 
 ## Overview
-This is a reusable component that displays a grid of pictures. This component uses styld-components and is enhanced by the [prop-x](https://github.com/carpenjk/prop-x) library to use responsive properties meaning property values may be provided as an array with a value for each breakpoint.
+This is a reusable component that displays a grid of pictures. This component uses styled-components and is enhanced by the [prop-x](https://github.com/carpenjk/prop-x) library to use responsive properties meaning property values may be provided as an array with a value for each breakpoint.
 
 ## Getting started
 
