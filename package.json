@@ -56,9 +56,6 @@
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
   },
-  "dependencies": {
-    "@carpenjk/inline-spinner": "github:carpenjk/inline-spinner"
-  },
   "peerDependencies": {
     "@carpenjk/prop-x": "^2.0.2",
     "react": "17 - 18",
