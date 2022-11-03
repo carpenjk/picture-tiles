@@ -1,17 +1,18 @@
 {
   "name": "picture-tiles",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Displays a grid of pictures.",
   "main": "lib/index.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "babel src -d lib",
     "prepublish": "npm run build",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carpenjk/picture-tiles.git"
+    "url": "https://github.com/carpenjk/picture-tiles.git"
   },
   "keywords": [
     "images"
@@ -45,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5",
     "typescript": "^4.5.2",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
@@ -53,8 +55,8 @@
     "@carpenjk/image-loader": "github:carpenjk/image-loader",
     "@carpenjk/inline-spinner": "github:carpenjk/inline-spinner",
     "@carpenjk/prop-x": "^1.0.2",
-    "react": "17 - 18",
-    "react-dom": "17 - 18",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {
