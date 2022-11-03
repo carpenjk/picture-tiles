@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import { unwindProps, getIndexedPropValue } from '@carpenjk/prop-x';
 import { ThemeContext } from 'styled-components';
 import { useBreakpoints } from '@carpenjk/prop-x/useBreakpoints';
-import { ImageLoader } from '@carpenjk/image-loader';
+import { ImageLoader } from './imageLoader/ImageLoader';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
 import useImageSizes from '../hooks/UseImageSizes';

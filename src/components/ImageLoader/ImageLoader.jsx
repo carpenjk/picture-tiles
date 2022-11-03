@@ -1,9 +1,9 @@
-import {
+import React, {
   createContext,
-  useCallback,
   useEffect,
-  useMemo,
   useState,
+  useMemo,
+  useCallback,
   useContext,
 } from 'react';
 
@@ -11,22 +11,16 @@ const ImageLoaderContext = createContext();
 const ImageLoader = ({ children, numImages }) => {
   const [isCompletelyLoaded, setIsCompletelyLoaded] = useState();
   const [images, setImages] = useState({});
+
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    // reset count when numImages changes
-    setImages({});
-    setCount(0);
-  }, [numImages]);
   const onLoad = useCallback((id) => {
     setImages((prev) => ({ ...prev, [id]: true }));
     setCount((prev) => prev + 1);
   }, []);
 
   useEffect(() => {
-    if (count >= numImages) {
-      setIsCompletelyLoaded(true);
-    }
+    if (count >= numImages) setIsCompletelyLoaded(true);
   }, [count, numImages]);
   const value = useMemo(
     () => ({ onLoad, count, isCompletelyLoaded, images }),
@@ -38,6 +32,7 @@ const ImageLoader = ({ children, numImages }) => {
     </ImageLoaderContext.Provider>
   );
 };
+
 function useImageLoader() {
   const context = useContext(ImageLoaderContext);
   if (context === undefined) {

@@ -2,7 +2,8 @@ import { ThemeContext } from 'styled-components';
 import { useContext } from 'react';
 import { useBreakpoints } from '@carpenjk/prop-x/useBreakpoints';
 import { getPropIndex } from '@carpenjk/prop-x';
-import { ImageWrapper, useImageLoader } from '@carpenjk/image-loader';
+import { useImageLoader } from './imageLoader/ImageLoader';
+import ImageWrapper from './imageLoader/ImageWrapper';
 import ImgButton from './ImgButton';
 
 import Tile from './Tile';

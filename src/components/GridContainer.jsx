@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { breakpoint, getProp } from '@carpenjk/prop-x/css';
 import { unwindProps, parseSizeUnits, windProps } from '@carpenjk/prop-x';
-import InlineSpinner from '@carpenjk/inline-spinner';
-import { useImageLoader } from '@carpenjk/image-loader';
+import { useImageLoader } from './imageLoader/ImageLoader';
+import InlineSpinner from './inlineSpinner/inlineSpinner';
 
 const StyledGrid = styled.div`
   position: relative;
