@@ -1,36 +1,8 @@
-import styled from 'styled-components';
 import { useRef, useEffect } from 'react';
-import { getProp, breakpoint } from '@carpenjk/prop-x/css';
 import { useImageLoader } from './imageLoader/ImageLoader';
+import StyledTilesWrapper from './styled/StyledTilesWrapper';
 import GridContainer from './GridContainer';
-
-const StyledTileWrapper = styled.div`
-  position: relative;
-  width: ${getProp('gridWidth')};
-  max-width: ${getProp('maxGridWidth')};
-  ${breakpoint(1)`
-    width: ${getProp('gridWidth')};
-    max-width: ${getProp('maxGridWidth')};
-  `}
-`;
-const StyledButtonWrapper = styled.div`
-  position: absolute;
-  top: ${getProp('top')};
-  right: ${getProp('right')};
-  bottom: ${getProp('bottom')};
-  left: ${getProp('left')};
-`;
-
-StyledTileWrapper.defaultProps = {
-  gridWidth: '100%',
-};
-
-StyledButtonWrapper.defaultProps = {
-  bottom: '20px',
-  right: '20px',
-  top: 'auto',
-  left: 'auto',
-};
+import StyledOverlayButtonWrapper from './styled/StyledOverlayButtonWrapper';
 
 const Tiles = ({
   children,
@@ -50,7 +22,7 @@ const Tiles = ({
   }, [isCompletelyLoaded]);
 
   return (
-    <StyledTileWrapper gridWidth={gridWidth} maxGridWidth={maxGridWidth}>
+    <StyledTilesWrapper gridWidth={gridWidth} maxGridWidth={maxGridWidth}>
       <GridContainer
         gridWidth={gridWidth}
         maxGridWidth={maxGridWidth}
@@ -58,14 +30,14 @@ const Tiles = ({
       >
         {children}
       </GridContainer>
-      <StyledButtonWrapper
+      <StyledOverlayButtonWrapper
         {...buttonPosProps}
         ref={buttonWrapperRef}
         style={{ visibility: 'hidden' }}
       >
         {OverlayButton && OverlayButton}
-      </StyledButtonWrapper>
-    </StyledTileWrapper>
+      </StyledOverlayButtonWrapper>
+    </StyledTilesWrapper>
   );
 };
 
