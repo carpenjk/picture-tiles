@@ -26,7 +26,7 @@ const PictureTiles = ({
 }) => {
   const _images = useImageSizes(images, columnWidth || maxColWidth, rowHeight);
   const theme = useContext(ThemeContext);
-  const br = useBreakpoints(theme);
+  const br = useBreakpoints(theme.breakpoints);
 
   const numImages = useMemo(() => {
     const valAry = unwindProps({ images }).map((wound) => wound.images.length);
