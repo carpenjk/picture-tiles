@@ -4,12 +4,12 @@ import { MAX_BREAKPOINT } from '../../globals';
 
 const StyledOverlayButtonWrapper = styled.div`
   position: absolute;
-  ${breakpoint([0, MAX_BREAKPOINT]`
+  ${breakpoint([0, MAX_BREAKPOINT])`
     top: ${getProp('top')};
     right: ${getProp('right')};
     bottom: ${getProp('bottom')};
     left: ${getProp('left')};  
-  `)}
+  `}
 `;
 
 StyledOverlayButtonWrapper.defaultProps = {
