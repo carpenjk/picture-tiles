@@ -11,7 +11,7 @@ import Tile from './Tile';
 const PictureTilesInner = ({ images, onPhotoClick }) => {
   const { onLoad } = useImageLoader();
   const theme = useContext(ThemeContext);
-  const br = useBreakpoints(theme);
+  const br = useBreakpoints(theme.breakpoints);
   const currBrIndex = getPropIndex(images, br.indexOfLower);
   return (
     <>
