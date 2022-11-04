@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { getProp, breakpoint } from '@carpenjk/prop-x/css';
+import { MAX_BREAKPOINT } from '../../globals';
 
 const StyledGrid = styled.div`
   position: relative;
@@ -32,14 +33,10 @@ const StyledGrid = styled.div`
     width: 100%;
     cursor: pointer;
   }
-  ${breakpoint(1)`
-    display: grid;
-    grid-auto-flow: row dense;
+  ${breakpoint([1, MAX_BREAKPOINT])`
     grid-template-rows: ${getProp('rowHeight')};
     grid-auto-rows: ${getProp('rowHeight')};
     grid-template-columns: ${getProp('gridTemplateColumns')};
-    justify-items: stretch;
-    align-items: stretch;
     height: ${getProp('gridHeight')};
     width: ${getProp('gridWidth')};
     max-width: ${getProp('maxGridWidth')};

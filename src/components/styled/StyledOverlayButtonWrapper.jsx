@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import { getProp } from '@carpenjk/prop-x/css';
+import { breakpoint, getProp } from '@carpenjk/prop-x/css';
+import { MAX_BREAKPOINT } from '../../globals';
 
 const StyledOverlayButtonWrapper = styled.div`
   position: absolute;
-  top: ${getProp('top')};
-  right: ${getProp('right')};
-  bottom: ${getProp('bottom')};
-  left: ${getProp('left')};
+  ${breakpoint([0, MAX_BREAKPOINT]`
+    top: ${getProp('top')};
+    right: ${getProp('right')};
+    bottom: ${getProp('bottom')};
+    left: ${getProp('left')};  
+  `)}
 `;
 
 StyledOverlayButtonWrapper.defaultProps = {
