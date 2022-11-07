@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useImageLoader } from './ImageLoader';
 import StyledLoadBackground from './styled/StyledLoadBackground';
 
@@ -9,6 +9,10 @@ const ImageWrapper = ({ children, id }) => {
   const handleTransitionEnd = () => {
     elemRef.current.style.display = 'none';
   };
+
+  useEffect(() => {
+    setTimeout(() => (elemRef.current.display = 'none'), 500);
+  }, [isLoaded]);
 
   return (
     <div
