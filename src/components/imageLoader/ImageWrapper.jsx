@@ -11,7 +11,7 @@ const ImageWrapper = ({ children, id }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => (elemRef.current.display = 'none'), 500);
+    setTimeout(() => (elemRef.current.style.display = 'none'), 500);
   }, [isLoaded]);
 
   return (
