@@ -15,7 +15,7 @@ const PictureTilesInner = ({ images, onPhotoClick }) => {
   const currBrIndex = getPropIndex(images, br.indexOfLower);
   return (
     <>
-      {images[currBrIndex].map((img, i) => {
+      {images.map((img, i) => {
         const { rowSpan, colSpan, ...imgProps } = img;
         return (
           <Tile

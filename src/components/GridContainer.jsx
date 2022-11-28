@@ -9,7 +9,7 @@ function calcProps(props) {
     columnWidth,
     gridHeight,
     gridWidth,
-    images,
+    imagesHide,
     maxGridWidth,
     rows,
     rowHeight,
@@ -38,7 +38,9 @@ function calcProps(props) {
     }
     return width;
   }
-  const imgCount = images && images.length ? images.length : 0;
+  const imgCount = imagesHide
+    ? imagesHide.filter((hideImage) => !hideImage).length
+    : 0;
   const _rowHeight = getRowHeight();
   const gridTemplateColumns = `repeat(${columns}, ${getColumnWidth()})`;
   return {
@@ -48,7 +50,6 @@ function calcProps(props) {
     gridHeight,
     gridWidth,
     gridTemplateColumns,
-    images,
     imgCount,
     maxGridWidth,
     rowHeight: _rowHeight,
@@ -59,9 +60,10 @@ function calcProps(props) {
 
 const GridContainer = ({ images, children, ...props }) => {
   const { isCompletelyLoaded } = useImageLoader();
-  const calculatedProps = unwindProps({ ...props, images }).map((propsAry) =>
-    calcProps(propsAry)
-  );
+  const calculatedProps = unwindProps({
+    ...props,
+    imagesHide: images.hide,
+  }).map((propsAry) => calcProps(propsAry));
   return (
     <StyledGrid {...windProps(calculatedProps)}>
       {children}
