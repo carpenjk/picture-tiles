@@ -1,8 +1,8 @@
-import { getProp } from '@carpenjk/prop-x/css';
+import { getProp, breakpoint } from '@carpenjk/prop-x/css';
 import styled from 'styled-components';
+import { MAX_BREAKPOINT } from '../../globals';
 
 export default styled.button`
-  display: ${getProp('display')};
   position: relative;
   padding: 0;
   border: none;
@@ -11,4 +11,7 @@ export default styled.button`
   color: inherit;
   background: none;
   cursor: pointer;
+  ${breakpoint([0, MAX_BREAKPOINT])`
+    display: ${getProp('display')};  
+  `}
 `;
