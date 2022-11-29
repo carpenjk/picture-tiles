@@ -5,7 +5,7 @@ const useImageSizes = (images, fallbackWidth, fallbackHeight) => {
   const _images = useMemo(
     () =>
       unwindProps({
-        images,
+        images: [images],
         width: fallbackWidth,
         height: fallbackHeight,
       }).map(({ images: imgs, width, height }) => ({

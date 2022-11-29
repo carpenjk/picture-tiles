@@ -5,7 +5,6 @@ import { getPropIndex } from '@carpenjk/prop-x';
 import { useImageLoader } from './imageLoader/ImageLoader';
 import ImageWrapper from './imageLoader/ImageWrapper';
 import ImgButton from './ImgButton';
-
 import Tile from './Tile';
 
 const PictureTilesInner = ({ images, onPhotoClick }) => {
