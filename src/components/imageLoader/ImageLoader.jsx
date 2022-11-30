@@ -9,7 +9,7 @@ import React, {
 
 const ImageLoaderContext = createContext();
 const ImageLoader = ({ children, numImages }) => {
-  const [isCompletelyLoaded, setIsCompletelyLoaded] = useState();
+  const [isCompletelyLoaded, setIsCompletelyLoaded] = useState(false);
   const [images, setImages] = useState({});
 
   const [count, setCount] = useState(0);
@@ -22,6 +22,7 @@ const ImageLoader = ({ children, numImages }) => {
   useEffect(() => {
     if (count >= numImages) setIsCompletelyLoaded(true);
   }, [count, numImages]);
+
   const value = useMemo(
     () => ({ onLoad, count, isCompletelyLoaded, images }),
     [onLoad, count, isCompletelyLoaded, images]
