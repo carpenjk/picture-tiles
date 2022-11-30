@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react';
-import { unwindProps, getIndexedPropValue } from '@carpenjk/prop-x';
+import { getIndexedPropValue } from '@carpenjk/prop-x';
 import { ThemeContext } from 'styled-components';
 import { useBreakpoints } from '@carpenjk/prop-x/useBreakpoints';
 import { ImageLoader } from './imageLoader/ImageLoader';
@@ -28,11 +28,9 @@ const PictureTiles = ({
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme.breakpoints);
 
-  const numImages = useMemo(() => {
-    const valAry = unwindProps({ images }).map((wound) => wound.images.length);
-    const indexedPropValue = getIndexedPropValue(valAry, br.indexOfLower);
-    return indexedPropValue;
-  }, [images, br.indexOfLower]);
+  const numImages = images
+    .map((img) => getIndexedPropValue(img.hide || false, br.indexOfLower))
+    .filter((img) => !img.hide).length;
 
   return (
     <ImageLoader numImages={numImages}>
