@@ -28,9 +28,13 @@ const PictureTiles = ({
   const theme = useContext(ThemeContext);
   const br = useBreakpoints(theme.breakpoints);
 
-  const numImages = images
-    .map((img) => getIndexedPropValue(img.hide || false, br.indexOfLower))
-    .filter((img) => !img.hide).length;
+  const numImages = useMemo(
+    () =>
+      images
+        .map((img) => getIndexedPropValue(img.hide || false, br.indexOfLower))
+        .filter((img) => !img.hide).length,
+    [images, br.indexOfLower]
+  );
 
   return (
     <ImageLoader numImages={numImages}>
