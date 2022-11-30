@@ -10,10 +10,11 @@ export default styled.div`
   width: 100%;
   height: 100%;
   opacity: 100%;
+  z-index: 1;
 
   &.isLoaded {
     background: none;
     z-index: 0;
-    transition: background ease-in 0.45s;
+    transition: background ease-in 0.45s, z-index 0 0.45s;
   }
 `;
