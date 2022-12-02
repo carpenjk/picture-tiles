@@ -32,7 +32,7 @@ const PictureTiles = ({
     () =>
       images
         .map((img) => getIndexedPropValue(img.hide || false, br.indexOfLower))
-        .filter((img) => !img.hide).length,
+        .filter((hide) => !hide).length,
     [images, br.indexOfLower]
   );
 

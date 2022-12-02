@@ -11,7 +11,6 @@ const ImageLoaderContext = createContext();
 const ImageLoader = ({ children, numImages }) => {
   const [isCompletelyLoaded, setIsCompletelyLoaded] = useState(false);
   const [images, setImages] = useState({});
-
   const [count, setCount] = useState(0);
 
   const onLoad = useCallback((id) => {
@@ -20,7 +19,11 @@ const ImageLoader = ({ children, numImages }) => {
   }, []);
 
   useEffect(() => {
-    if (count >= numImages) setIsCompletelyLoaded(true);
+    if (count >= numImages) {
+      setIsCompletelyLoaded(true);
+      return;
+    }
+    setIsCompletelyLoaded(false);
   }, [count, numImages]);
 
   const value = useMemo(
