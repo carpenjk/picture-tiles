@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 import { getIndexedPropValue } from '@carpenjk/prop-x';
 import { ThemeContext } from 'styled-components';
-import { useBreakpoints } from '@carpenjk/prop-x/useBreakpoints';
+import { useBreakpoints } from '@carpenjk/use-breakpoints';
 import { ImageLoader } from './imageLoader/ImageLoader';
 import Tiles from './Tiles';
 import PictureTilesInner from './PictureTilesInner';
